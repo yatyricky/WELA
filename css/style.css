@@ -1,0 +1,41 @@
+a {
+	text-decoration:none;
+}
+a:hover {
+	background-color:#0000FF;
+	color:#FFFFFF;
+}
+.totop {
+	position:fixed;
+	top:10px;
+	left:600px;
+	z-index:2;
+}
+.banner {
+	font-size:18px;
+	font-weight:bold;
+	border-bottom-style:solid;
+	border-bottom-width:thin;
+	margin-bottom:20px;
+	margin-top:20px;
+}
+.listitems {
+}
+.items {
+	border-top-style:solid;
+	border-top-width:thin;
+	margin-top:30px;
+	font-weight:bold;
+}
+.docs {
+	margin-left:40px;
+}
+.txtarea {
+	display:block;
+	width:800px;
+	height:120px;
+}
+.inpt {
+	/*display:block;*/
+	width:40px;
+}

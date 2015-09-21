@@ -1,0 +1,119 @@
+/* CSS Document */
+
+/*
+These colours only!
+#ffffff Background
+#1d1d1d Foreground
+#c0392b Highlight
+*/
+
+body {
+	width: 100%;
+	background-color:#ffffff;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.mainContainer {
+	width: 1900px;
+}
+
+.summary-area {
+	position:fixed;
+	width: 200px;
+	float:left;
+	height:900px;
+	overflow-y:auto;
+}
+
+.working-area {
+	min-width: 1700px;
+	margin-left:200px;
+	float:left;
+}
+
+/* drop box */
+.drop-zone {
+	height: 100px;
+	line-height: 100px;
+	vertical-align:middle;
+	text-align:center;
+	font-size:150%;
+	font-family:"Times New Roman", Times, serif;
+	font-style:oblique;
+	margin: 10px;
+	border:2px dotted #1d1d1d;
+	color:#1d1d1d;
+	background-color:#ffffff;
+}
+.fakeProgress {
+	display: none;
+}
+.ondrop {
+	border:2px solid #1d1d1d;
+	color: #1d1d1d;
+}
+
+/* summary area */
+.list {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#1d1d1d;
+	margin: 2px;
+	border-top:2px solid #1d1d1d;
+}
+.list-header {
+	font-size: 130%;
+	font-weight:bold;
+	padding: 5px;
+}
+.list-items {
+}
+.list-item {
+	cursor:pointer;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-left: 5px solid #ffffff;
+	border-right: 5px solid #ffffff;
+	
+	height:22px;
+	line-height:22px;
+	vertical-align:middle;
+	white-space:nowrap;
+	overflow:hidden;
+}
+.list-item:hover {
+	color: #ffffff;
+	background-color:#1d1d1d;
+}
+.long-battle {
+	color: #c0392b;
+}
+.long-battle:hover {
+	color: #ffffff;
+	background-color:#c0392b;
+}
+.selected {
+	border-left: 5px solid #1d1d1d;
+}
+
+.work-rows {
+}
+
+.work-cols {
+	width:50%;
+	float:left;
+}
+
+.achart {
+	height: auto;
+	margin: 2px;
+}
+
+.hpsLabel {
+	font-weight:bold;
+	cursor:pointer;
+	text-decoration:underline;
+}
