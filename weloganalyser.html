@@ -13,90 +13,90 @@
 </head>
 
 <body>
-    <div id="nav"><a href="index.html">Home</a></div>
+    <div id="nav"><a href="index.html">主页</a></div>
     
     <div class="mainContainer">
-    	<div class="summary-area">
+        <div class="summary-area">
             
-        	<div id="sumFastnav" class="list">
-				<div class="list-header">Fast Navigation</div>
+            <div id="sumFastnav" class="list">
+                <div class="list-header">快速导航</div>
                 <div class="list-items">
-                	<div id="fastnavDamage" class="list-item">Damage</div>
-                	<div id="fastnavHealing" class="list-item">Healing</div>
-                	<div id="fastnavCast" class="list-item">Cast</div>
-                	<div id="fastnavDamagetaken" class="list-item">Damage Taken</div>
-                	<div id="fastnavMana" class="list-item">Mana</div>
+                    <div id="fastnavDamage" class="list-item">伤害</div>
+                    <div id="fastnavHealing" class="list-item">治疗</div>
+                    <div id="fastnavCast" class="list-item">施法</div>
+                    <div id="fastnavDamagetaken" class="list-item">受到伤害</div>
+                    <div id="fastnavMana" class="list-item">法力变化</div>
                 </div>
-			</div>
+            </div>
         
-        	<div id="sumCombats" class="list">
-				<div class="list-header">Combats</div>
+            <div id="sumCombats" class="list">
+                <div class="list-header">战斗列表</div>
                 <div id="combatList" class="list-items"></div>
-			</div>
+            </div>
             
-        	<!--div id="sumPlayeru" class="list">
-				<div class="list-header">Player Units</div>
+            <!--div id="sumPlayeru" class="list">
+                <div class="list-header">Player Units</div>
                 <div id="playerList" class="list-items"></div>
-			</div>
+            </div>
             
-        	<div id="sumEnemies" class="list">
-				<div class="list-header">Enemies</div>
+            <div id="sumEnemies" class="list">
+                <div class="list-header">Enemies</div>
                 <div id="enemyList" class="list-items"></div>
             </div-->
         </div>
         
         <div class="working-area">
-        	<div id="drop_zone" class="drop-zone">To analyse Warcraft III combat logs, drop 'em here to start. Yet, I'm not gonna be responsible for any error or idiotic inputs.</div>
+            <div id="drop_zone" class="drop-zone">拖拽wela文件到此处以开始分析</div>
             
             <div id="work-damage" class="work-item">
-            	<div class="work-rows">
-                	<div class="work-cols"><div id="damageAll" class="achart"></div></div>
-                	<div class="work-cols"><div id="dpsAll" class="achart"></div></div>
+                <div class="work-rows">
+                    <div class="work-cols"><div id="damageAll" class="achart"></div></div>
+                    <div class="work-cols"><div id="dpsAll" class="achart"></div></div>
                 </div>
             </div>
 
             <div id="work-healing" class="work-item">
-            	<div class="work-rows">
-                	<div class="work-cols"><div id="healingAll" class="achart"></div></div>
-                	<div class="work-cols"><div id="hpsAll" class="achart"></div></div>
+                <div class="work-rows">
+                    <div class="work-cols"><div id="healingAll" class="achart"></div></div>
+                    <div class="work-cols"><div id="hpsAll" class="achart"></div></div>
                 </div>
-            	<div class="work-rows">
-                	<div class="work-cols"><div id="healing" class="achart"></div></div>
-                	<div class="work-cols"><div id="healing1" class="achart"></div></div>
+                <div class="work-rows">
+                    <div class="work-cols"><div id="healing" class="achart"></div></div>
+                    <div class="work-cols"><div id="healing1" class="achart"></div></div>
                 </div>
             </div>
             
             <div id="work-cast" class="work-item">
-            	<div class="work-rows">
-                	<div class="work-cols"><div id="castAll" class="achart"></div></div>
-                	<div class="work-cols"><div id="castOne" class="achart"></div></div>
+                <div class="work-rows">
+                    <div class="work-cols"><div id="castAll" class="achart"></div></div>
+                    <div class="work-cols"><div id="castOne" class="achart"></div></div>
                 </div>
             </div>
             
             <div id="work-damagetaken" class="work-item">
-            	<div class="work-rows">
-                	<div class="work-cols"><div id="damageTakenAll" class="achart"></div></div>
-                	<div class="work-cols"><div id="dtpsAll" class="achart"></div></div>
+                <div class="work-rows">
+                    <div class="work-cols"><div id="damageTakenAll" class="achart"></div></div>
+                    <div class="work-cols"><div id="dtpsAll" class="achart"></div></div>
                 </div>
             </div>
             
             <div id="work-mana" class="work-item">
-            	<div class="work-rows">
-                	<div class="work-cols"><div id="manaAll" class="achart"></div></div>
-                	<div class="work-cols"><div id="manaOne" class="achart"></div></div>
+                <div class="work-rows">
+                    <div class="work-cols"><div id="manaAll" class="achart"></div></div>
+                    <div class="work-cols"><div id="manaOne" class="achart"></div></div>
                 </div>
             </div>
         </div>
     </div>    
 
-    <script>	
-		// Fast Navigation
-		$("#fastnavDamage").click(function() {window.scrollTo(0, document.getElementById("damageAll").offsetTop);});
-		$("#fastnavHealing").click(function() {window.scrollTo(0, document.getElementById("healingAll").offsetTop);});
-		$("#fastnavDamagetaken").click(function() {window.scrollTo(0, document.getElementById("damageTakenAll").offsetTop);});
-		$("#fastnavCast").click(function() {window.scrollTo(0, document.getElementById("castAll").offsetTop);});
-		$("#fastnavMana").click(function() {window.scrollTo(0, document.getElementById("manaAll").offsetTop);});
-	
+    <script>    
+        // Fast Navigation
+        $("#fastnavDamage").click(function() {window.scrollTo(0, document.getElementById("damageAll").offsetTop);});
+        $("#fastnavHealing").click(function() {window.scrollTo(0, document.getElementById("healingAll").offsetTop);});
+        $("#fastnavDamagetaken").click(function() {window.scrollTo(0, document.getElementById("damageTakenAll").offsetTop);});
+        $("#fastnavCast").click(function() {window.scrollTo(0, document.getElementById("castAll").offsetTop);});
+        $("#fastnavMana").click(function() {window.scrollTo(0, document.getElementById("manaAll").offsetTop);});
+    
         // Handle drag and drop events with jQuery
         var obj = $("#drop_zone");
         obj.on('dragenter', function (e) {
@@ -124,1177 +124,1174 @@
             e.preventDefault();
         });
 
-		// original arrays
+        // original arrays
         var damages = [], heals = [], casts = [], combatOriginal = [], manas = [];
 
         var sources = []; // {name: x, type: y} current only
-		var allies = [];
+        var allies = [];
         var selectedCombat;
         var combatFlag = "";
-		var combats = [];
-		
-		var tm0, tm1;
+        var combats = [];
+        
+        var tm0, tm1;
 
-		$.pushDistinct = function (arr, dat) {
-			if ((function (arr, dat) {
-				for (var i = 0; i < arr.length; i ++) {
-					if (arr[i].name == dat.name) {
-						return -1;
-					}
-				}
-				return 1;
-			})(arr, dat) == 1) {
-				arr.push(dat);
-			}
-		}
+        $.pushDistinct = function (arr, dat) {
+            if ((function (arr, dat) {
+                for (var i = 0; i < arr.length; i ++) {
+                    if (arr[i].name == dat.name) {
+                        return -1;
+                    }
+                }
+                return 1;
+            })(arr, dat) == 1) {
+                arr.push(dat);
+            }
+        }
 
         obj.on('drop', function (e) {
             $(this).removeClass("ondrop");
             e.preventDefault();
-			
-			var files = e.originalEvent.dataTransfer.files;
-			
-			for (var i = 0; i < files.length; i++) {
-				var reader = new FileReader();
-				reader.onload = function (e) {
-					// get rid of all jass shit
-					var cleanContent = e.target.result.replace(/function PreloadFiles takes nothing returns nothing/, "");
-					cleanContent = cleanContent.replace(/call Preload\( \"/g, "");
-					cleanContent = cleanContent.replace(/\" \)/g, "");
-					cleanContent = cleanContent.replace(/call PreloadEnd\(.*/g, "");
-					cleanContent = cleanContent.replace(/endfunction/g, "");
+            
+            var files = e.originalEvent.dataTransfer.files;
+            
+            for (var i = 0; i < files.length; i++) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var lines = e.target.result.split("\n");
+                    for(var i = 0; i < lines.length; i++) {
+                        var tokens = lines[i].split(/[\",]/);
+                        if (tokens.length > 3) {
+                            tokens.shift();
+                            tokens.pop();
+                            // console.log(tokens);
+                            if (tokens[0] == "damage") {
+                                damages.push(tokens);
+                                //$.pushDistinct(sources, {name:tokens[2], type:tokens[03]});
+                                //$.pushDistinct(sources, {name:tokens[3], type:tokens[04]});
+                            } else if (tokens[0] == "heal") {
+                                heals.push(tokens);
+                                //$.pushDistinct(sources, {name:tokens[2], type:tokens[8]});
+                                //$.pushDistinct(sources, {name:tokens[3], type:tokens[9]});
+                            } else if (tokens[0] == "cast") {
+                                casts.push(tokens);
+                            } else if (tokens[0] == "combat") {
+                                combatOriginal.push(tokens);
+                            } else if (tokens[0] == "mana") {
+                                manas.push(tokens);
+                            }
+                        }
+                    }
+                };
 
-					// start parse json
-					$.each($.parseJSON(cleanContent), function (i) {
-						if (this[0] == "damage") {
-							damages.push(this);
-							//$.pushDistinct(sources, {name:this[2], type:this[13]});
-							//$.pushDistinct(sources, {name:this[3], type:this[14]});
-						} else if (this[0] == "heal") {
-							heals.push(this);
-							//$.pushDistinct(sources, {name:this[2], type:this[8]});
-							//$.pushDistinct(sources, {name:this[3], type:this[9]});
-						} else if (this[0] == "cast") {
-							casts.push(this);
-						} else if (this[0] == "combat") {
-							combatOriginal.push(this);
-						} else if (this[0] == "mana") {
-							manas.push(this);
-						}
-					});	
+                reader.readAsText(files[i]);    
+            }
+        
+            // Make the drop box disappear
+            $(this).addClass("fakeProgress");
+            
+            // After delay, then parse
+            setTimeout(function () {
+                $.sort2DArrayByIndexAsc(combatOriginal, 1);
+                $.sort2DArrayByIndexAsc(damages, 1);
+                $.sort2DArrayByIndexAsc(heals, 1);
+                
+                $.each(combatOriginal, function() {
+                    if (combatFlag == "") {
+                        combatFlag = this[1];
+                    } else {
+                        var intv = (parseFloat(this[1]) - parseFloat(combatFlag)).toFixed(2);
+                        combats.push({
+                            name: combatFlag + "-" + this[1] +  " (" + intv + ")",
+                            start: combatFlag,
+                            end: this[1],
+                            interval: intv,
+                            solid: 0
+                        });
+                        combatFlag = "";
+                    }
+                });
+    
+                var str = "";
+                $.each(combats, function (i) {
+                    str += "<div id=\"combat\" class=\"list-item"+(parseFloat(combats[i].interval)>60.0?" long-battle":"")+"\">" + combats[i].name +"</div>";
+                });
+                $("#combatList").html(str);
 
-				};
+            }, 500);
+        });        
 
-				reader.readAsText(files[i]);	
-							
-			}
-		
-			// Make the drop box disappear
-			$(this).addClass("fakeProgress");
-			
-			// After delay, then parse
-			setTimeout(function () {
-				$.sort2DArrayByIndexAsc(combatOriginal, 1);
-				$.sort2DArrayByIndexAsc(damages, 1);
-				$.sort2DArrayByIndexAsc(heals, 1);
-				
-				$.each(combatOriginal, function() {
-					if (combatFlag == "") {
-						combatFlag = this[1];
-					} else {
-						var intv = (parseFloat(this[1]) - parseFloat(combatFlag)).toFixed(2);
-						combats.push({
-							name: combatFlag + "-" + this[1] +  " (" + intv + ")",
-							start: combatFlag,
-							end: this[1],
-							interval: intv,
-							solid: 0
-						});
-						combatFlag = "";
-					}
-				});
-	
-			    var str = "";
-				$.each(combats, function (i) {
-					str += "<div id=\"combat\" class=\"list-item"+(parseFloat(combats[i].interval)>60.0?" long-battle":"")+"\">" + combats[i].name +"</div>";
-				});
-				$("#combatList").html(str);
-
-			}, 500);
-        });		
-
-        var TIME_INTERVAL = 5.0;	
-		
-		$.accumulate2DArray3Var = function (arr, lab, eff, ovf) {			
-			var found = 0;
-			$.each(arr, function (i) {
-				if (arr[i][0] == lab) {
-					found = 1;
-					arr[i][2] += eff;
-					arr[i][3] += ovf;
-					arr[i][1] += eff + ovf;
-				}
-			});
-			if (found == 0) {
-				arr.push([lab, eff+ovf, eff, ovf]);
-			}
-		}
-		
-		var lastHealingDrillOption = null;
-		
-		function healingDrill(val) {
-			var colors = Highcharts.getOptions().colors;
-			var categories = []; // 1d array names 'heal', 'rejuv', 'fastheal', 'flash'
-			var name = 'Heal names';
-			var data = []; /* elem = {
-										y: 40, // main percentage
-										color: colors[0], // fixed
-										drilldown: {		// fixed
-											name: 'heal effects',  // fixed
-											categories: ['Effect', 'Overflow'],  // fixed
-											data: [10, 30],   // small percentage, build up to main percentage
-											color: colors[0]
-										}
-									 }*/
-			
-			var dataSeries = [];
-			$.each(heals, function () {
-				if (this[2] == val) {
-					var tmnow = parseFloat(this[1]);
-					if (tm0 <= tmnow && tmnow <= tm1) {
-						$.accumulate2DArray3Var(dataSeries, this[4], parseFloat(this[5]), parseFloat(this[6]));
-					}
-				}
-			});
-			$.sort2DArrayByIndex(dataSeries, 1);
-			
-			$.each(dataSeries, function(i) {
-				categories.push(dataSeries[i][0]);
-				data.push({
-					y: dataSeries[i][1],
-					color: colors[i],
-					drilldown: {
-						name: 'Heal effects',
-						categories: [dataSeries[i][0]+' Effective', dataSeries[i][0]+' Overflow'],
-						data: [dataSeries[i][2], dataSeries[i][3]],
-						color: colors[i]
-					}
-				});
-			});
-					
-			// Build the data arrays
-			var browserData = [];
-			var versionsData = [];
-			for (var i = 0; i < data.length; i++) {			
-				// add browser data
-				browserData.push({
-					name: categories[i],
-					y: data[i].y,
-					color: data[i].color
-				});
-			
-				// add version data
-				for (var j = 0; j < data[i].drilldown.data.length; j++) {
-					var brightness = 0.2 - (j / data[i].drilldown.data.length) / 5 ;
-					versionsData.push({
-						name: data[i].drilldown.categories[j],
-						y: data[i].drilldown.data[j],
-						color: Highcharts.Color(data[i].color).brighten(brightness).get()
-					});
-				}
-			}
-			
-			// build options of course
-			var options = {
-				chart: {
-					type: 'pie'
-				},
-				title: {
-					text: 'Healings done by ' + val
-				},
-				yAxis: {
-					title: {
-						text: 'Total percent'
-					}
-				},
-				plotOptions: {
-					pie: {
-						shadow: false,
-						center: ['50%', '50%']
-					}
-				},
-				tooltip: {
-					pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
-			//						valueSuffix: ''
-				},
-				series: [{
-					name: 'Heals',
-					data: browserData,
-					size: '60%',
-					dataLabels: {
-						formatter: function() {
-							var pct = this.point.percentage.toFixed(2)+"%";
-							return this.point.percentage > 5 ? this.point.name+": "+pct : null;
-						},
-						color: 'white',
-						distance: -30
-					}
-				}, {
-					name: 'Points',
-					data: versionsData,
-					size: '80%',
-					innerSize: '60%',
-					dataLabels: {
-						formatter: function() {
-							// display only if larger than 1
-							return this.y > 1 ? '<b>'+ this.point.name +':</b> '+ this.point.percentage.toFixed(2)+"%" : null;
-						}
-					}
-				}]
-			}
-			
-			$("#healing").highcharts(options);
-			if (lastHealingDrillOption == null) {
-				lastHealingDrillOption = options;
-			}
-			$("#healing1").highcharts(lastHealingDrillOption);
-			lastHealingDrillOption = options;
-			
-		    window.scrollTo(0, document.getElementById("healingAll").offsetTop); 
-		}
-		
-		function castDrill(val) {
-			var fillData = [];
-			for (var i = 0; i < casts.length; i ++) {
-				if (casts[i][2] == val) {
-					var tmnow = parseFloat(casts[i][1]);
-					if (tm0 <= tmnow && tmnow <= tm1) {
-						var index = (function (arr, ind){
-							for (var ii = 0; ii < arr.length; ii ++) {
-								if (arr[ii].name == ind) {
-									return ii;
-								}
-							}
-							return -1;
-						})(fillData, casts[i][4]);
-						if (index == -1) {
-							fillData.push({
-								name: casts[i][4],
-								y: 1
-							});
-						} else {
-							fillData[index].y += 1;
-						}
-					}
-				}
-			}
-			// sort
-			(function(arr) {
-				var maxi;
-				for (var i = 0; i < arr.length - 1; i ++) {
-					maxi = i;
-					for (var j = i + 1; j < arr.length; j ++) {
-						if (arr[maxi].y < arr[j].y) {
-							maxi = j;
-						}
-					}
-					var tmp = arr[i];
-					arr[i] = arr[maxi];
-					arr[maxi] = tmp;
-				}
-			})(fillData);
-			
-			var options = {
-				chart: {
-					plotBackgroundColor: null,
-					plotBorderWidth: 1,//null,
-					plotShadow: false
-				},
-				title: {
-					text: val + 'Cast'
-				},
-				tooltip: {
-					pointFormat: '{series.name}: <b>{point.y:.0f} ({point.percentage:.2f}%)</b>'
-				},
-				series: [{
-					type: 'pie',
-					name: 'Ability cast',
-					data: fillData
-				}]
-			}
-			
-			$("#castOne").highcharts(options);
-		}
+        var TIME_INTERVAL = 5.0;    
+        
+        $.accumulate2DArray3Var = function (arr, lab, eff, ovf) {            
+            var found = 0;
+            $.each(arr, function (i) {
+                if (arr[i][0] == lab) {
+                    found = 1;
+                    arr[i][2] += eff;
+                    arr[i][3] += ovf;
+                    arr[i][1] += eff + ovf;
+                }
+            });
+            if (found == 0) {
+                arr.push([lab, eff+ovf, eff, ovf]);
+            }
+        }
+        
+        var lastHealingDrillOption = null;
+        
+        function healingDrill(val) {
+            var colors = Highcharts.getOptions().colors;
+            var categories = []; // 1d array names 'heal', 'rejuv', 'fastheal', 'flash'
+            var name = 'Heal names';
+            var data = []; /* elem = {
+                                        y: 40, // main percentage
+                                        color: colors[0], // fixed
+                                        drilldown: {        // fixed
+                                            name: 'heal effects',  // fixed
+                                            categories: ['Effect', 'Overflow'],  // fixed
+                                            data: [10, 30],   // small percentage, build up to main percentage
+                                            color: colors[0]
+                                        }
+                                     }*/
+            
+            var dataSeries = [];
+            $.each(heals, function () {
+                if (this[2] == val) {
+                    var tmnow = parseFloat(this[1]);
+                    if (tm0 <= tmnow && tmnow <= tm1) {
+                        $.accumulate2DArray3Var(dataSeries, this[4], parseFloat(this[5]), parseFloat(this[6]));
+                    }
+                }
+            });
+            $.sort2DArrayByIndex(dataSeries, 1);
+            
+            $.each(dataSeries, function(i) {
+                categories.push(dataSeries[i][0]);
+                data.push({
+                    y: dataSeries[i][1],
+                    color: colors[i],
+                    drilldown: {
+                        name: 'Heal effects',
+                        categories: [dataSeries[i][0]+' Effective', dataSeries[i][0]+' Overflow'],
+                        data: [dataSeries[i][2], dataSeries[i][3]],
+                        color: colors[i]
+                    }
+                });
+            });
+                    
+            // Build the data arrays
+            var browserData = [];
+            var versionsData = [];
+            for (var i = 0; i < data.length; i++) {            
+                // add browser data
+                browserData.push({
+                    name: categories[i],
+                    y: data[i].y,
+                    color: data[i].color
+                });
+            
+                // add version data
+                for (var j = 0; j < data[i].drilldown.data.length; j++) {
+                    var brightness = 0.2 - (j / data[i].drilldown.data.length) / 5 ;
+                    versionsData.push({
+                        name: data[i].drilldown.categories[j],
+                        y: data[i].drilldown.data[j],
+                        color: Highcharts.Color(data[i].color).brighten(brightness).get()
+                    });
+                }
+            }
+            
+            // build options of course
+            var options = {
+                chart: {
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Healings done by ' + val
+                },
+                yAxis: {
+                    title: {
+                        text: 'Total percent'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        shadow: false,
+                        center: ['50%', '50%']
+                    }
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
+            //                        valueSuffix: ''
+                },
+                series: [{
+                    name: 'Heals',
+                    data: browserData,
+                    size: '60%',
+                    dataLabels: {
+                        formatter: function() {
+                            var pct = this.point.percentage.toFixed(2)+"%";
+                            return this.point.percentage > 5 ? this.point.name+": "+pct : null;
+                        },
+                        color: 'white',
+                        distance: -30
+                    }
+                }, {
+                    name: 'Points',
+                    data: versionsData,
+                    size: '80%',
+                    innerSize: '60%',
+                    dataLabels: {
+                        formatter: function() {
+                            // display only if larger than 1
+                            return this.y > 1 ? '<b>'+ this.point.name +':</b> '+ this.point.percentage.toFixed(2)+"%" : null;
+                        }
+                    }
+                }]
+            }
+            
+            $("#healing").highcharts(options);
+            if (lastHealingDrillOption == null) {
+                lastHealingDrillOption = options;
+            }
+            $("#healing1").highcharts(lastHealingDrillOption);
+            lastHealingDrillOption = options;
+            
+            window.scrollTo(0, document.getElementById("healingAll").offsetTop); 
+        }
+        
+        function castDrill(val) {
+            var fillData = [];
+            for (var i = 0; i < casts.length; i ++) {
+                if (casts[i][2] == val) {
+                    var tmnow = parseFloat(casts[i][1]);
+                    if (tm0 <= tmnow && tmnow <= tm1) {
+                        var index = (function (arr, ind){
+                            for (var ii = 0; ii < arr.length; ii ++) {
+                                if (arr[ii].name == ind) {
+                                    return ii;
+                                }
+                            }
+                            return -1;
+                        })(fillData, casts[i][4]);
+                        if (index == -1) {
+                            fillData.push({
+                                name: casts[i][4],
+                                y: 1
+                            });
+                        } else {
+                            fillData[index].y += 1;
+                        }
+                    }
+                }
+            }
+            // sort
+            (function(arr) {
+                var maxi;
+                for (var i = 0; i < arr.length - 1; i ++) {
+                    maxi = i;
+                    for (var j = i + 1; j < arr.length; j ++) {
+                        if (arr[maxi].y < arr[j].y) {
+                            maxi = j;
+                        }
+                    }
+                    var tmp = arr[i];
+                    arr[i] = arr[maxi];
+                    arr[maxi] = tmp;
+                }
+            })(fillData);
+            
+            var options = {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 1,//null,
+                    plotShadow: false
+                },
+                title: {
+                    text: val + ' 施法'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.y:.0f} ({point.percentage:.2f}%)</b>'
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Ability cast',
+                    data: fillData
+                }]
+            }
+            
+            $("#castOne").highcharts(options);
+        }
 
         $("#combatList").on('click', '#combat', function () {
             selectedCombat = (function(str) {
-				for (var i = 0 ; i < combats.length; i ++) {
-					if (combats[i].name == str) {
-						return combats[i];
-					}
-				}
-				return {};
-			})($(this).text());
+                for (var i = 0 ; i < combats.length; i ++) {
+                    if (combats[i].name == str) {
+                        return combats[i];
+                    }
+                }
+                return {};
+            })($(this).text());
             $(this).siblings().removeClass("selected");
             $(this).addClass("selected");
-		
-			tm0 = parseFloat(selectedCombat.start);
-			tm1 = parseFloat(selectedCombat.end);
-			
-			// update player units and enemies list
-			(function(theDom) {
-				sources = [];
-				allies = [];
-				for (var i = 0; i < damages.length; i ++) {
-					if (tm0 < parseFloat(damages[i][1]) && parseFloat(damages[i][1]) < tm1) {
-						$.pushDistinct(sources, {name:damages[i][2], type:damages[i][13]});
-						$.pushDistinct(sources, {name:damages[i][3], type:damages[i][14]});
-					}
-				}
-				for (var i = 0; i < heals.length; i ++) {		
-					if (tm0 < parseFloat(heals[i][1]) && parseFloat(heals[i][1]) < tm1) {			
-						$.pushDistinct(sources, {name:heals[i][2], type:heals[i][8]});
-						$.pushDistinct(sources, {name:heals[i][3], type:heals[i][9]});
-					}
-				}
-				var strA = "", strE = "";
-				for (var i = 0; i < sources.length; i ++) {
-					if (sources[i].type == "boss") {
-						strE += "<div class=\"list-item long-battle\">" + sources[i].name +"</div>";
-						if (selectedCombat.solid == 0) {
-							var newName = sources[i].name + " (" + selectedCombat.interval + ")";
-							selectedCombat.name = newName;
-							theDom.text(newName);
-							selectedCombat.solid = 1;
-						}
-					} else if (sources[i].type == "creep") {
-						strE += "<div class=\"list-item\">" + sources[i].name +"</div>";
-						if (selectedCombat.solid == 0) {
-							var newName = sources[i].name + " (" + selectedCombat.interval + ")";
-							selectedCombat.name = newName;
-							theDom.text(newName);
-							selectedCombat.solid = 1;
-						}
-					} else if (sources[i].type == "minion") {
-						strA += "<div class=\"list-item\">" + sources[i].name +"</div>";
-						allies.push(sources[i]);
-					} else {
-						strA += "<div class=\"list-item long-battle\">" + sources[i].name +"</div>";
-						allies.push(sources[i]);
-					}
-				}
-				$("#playerList").html(strA);
-				$("#enemyList").html(strE);
-//				console.log(sources);
-			})($(this));
-			
+        
+            tm0 = parseFloat(selectedCombat.start);
+            tm1 = parseFloat(selectedCombat.end);
+            
+            // update player units and enemies list
+            (function(theDom) {
+                sources = [];
+                allies = [];
+                for (var i = 0; i < damages.length; i ++) {
+                    if (tm0 < parseFloat(damages[i][1]) && parseFloat(damages[i][1]) < tm1) {
+                        $.pushDistinct(sources, {name:damages[i][2], type:damages[i][13]});
+                        $.pushDistinct(sources, {name:damages[i][3], type:damages[i][14]});
+                    }
+                }
+                for (var i = 0; i < heals.length; i ++) {        
+                    if (tm0 < parseFloat(heals[i][1]) && parseFloat(heals[i][1]) < tm1) {            
+                        $.pushDistinct(sources, {name:heals[i][2], type:heals[i][8]});
+                        $.pushDistinct(sources, {name:heals[i][3], type:heals[i][9]});
+                    }
+                }
+                var strA = "", strE = "";
+                for (var i = 0; i < sources.length; i ++) {
+                    if (sources[i].type == "boss") {
+                        strE += "<div class=\"list-item long-battle\">" + sources[i].name +"</div>";
+                        if (selectedCombat.solid == 0) {
+                            var newName = sources[i].name + " (" + selectedCombat.interval + ")";
+                            selectedCombat.name = newName;
+                            theDom.text(newName);
+                            selectedCombat.solid = 1;
+                        }
+                    } else if (sources[i].type == "creep") {
+                        strE += "<div class=\"list-item\">" + sources[i].name +"</div>";
+                        if (selectedCombat.solid == 0) {
+                            var newName = sources[i].name + " (" + selectedCombat.interval + ")";
+                            selectedCombat.name = newName;
+                            theDom.text(newName);
+                            selectedCombat.solid = 1;
+                        }
+                    } else if (sources[i].type == "minion") {
+                        strA += "<div class=\"list-item\">" + sources[i].name +"</div>";
+                        allies.push(sources[i]);
+                    } else {
+                        strA += "<div class=\"list-item long-battle\">" + sources[i].name +"</div>";
+                        allies.push(sources[i]);
+                    }
+                }
+                $("#playerList").html(strA);
+                $("#enemyList").html(strE);
+//                console.log(sources);
+            })($(this));
+            
 // ------------------------  Damage part --------------------------------
-			(function() {			
-				// damageAll
-				(function() {
-					var options = {
-						chart: {
-							type: 'bar'
-						},
-						title: {
-							text: 'Damages Done By All Players'
-						},
-						xAxis: {
-							type: 'category',
-							labels: {
-								style: {
-									fontSize: '13px',
-									fontFamily: 'Verdana, sans-serif'
-								}
-							}
-						},
-						yAxis: {
-							min: 0,
-							title: {
-								text: null
-							}
-						},
-						legend: {
-							enabled: false
-						},
-						tooltip: {
-							pointFormat: 'Total damage: <b>{point.y:.2f} ({point.portion:.2f}%)</b>'
-						},
-						series: [],
-						drilldown:{            
-							drillUpButton: {
-								relativeTo: 'spacingBox',
-								position: {
-									y: 0,
-									x: 0
-								}				
-							},
-							series: []
-						}
-					};
-		
-					var dmgseries = [];
-					//var drilldown.series = []; // list of {id: "", colorByPoint: true, data: [{name: "asd", y: 12, portion: 50},{},{},...]}
-					var grantTotal = 0.0;
-					for (var i = 0; i < allies.length; i ++) {
-						var totdmg = 0.0;
-						var dmgDetails = {
-							id: allies[i].name,
-							colorByPoint: true,
-							data: []
-						};
-						for (var j = 0; j < damages.length; j ++) {
-							if (damages[j][2] == allies[i].name) {
-								var tmnow = parseFloat(damages[j][1]);
-								if (tm0 <= tmnow && tmnow <= tm1) {
-									var tmpSubDmg = parseFloat(damages[j][5]);
-									totdmg += tmpSubDmg;
-									var abilIndex = (function(ite, arr) {
-										for (var k = 0; k < arr.length; k ++) {
-											if (ite == arr[k].name) {
-												return k;
-											}
-										}
-										return -1;
-									})(damages[j][4], dmgDetails.data);
-									if (abilIndex == -1) {
-										dmgDetails.data.push({
-											name: damages[j][4],
-											y: tmpSubDmg,
-											portion: 0
-										});
-									} else {
-										dmgDetails.data[abilIndex].y += tmpSubDmg;
-									}
-								}
-							}
-						}
-						for (var j = 0; j < dmgDetails.data.length; j ++) {
-							dmgDetails.data[j].portion = dmgDetails.data[j].y / totdmg * 100.0;
-						}
-						
-						// sort by damage
-						(function(arr) {
-							var maxi;
-							for (var i = 0; i < arr.length - 1; i ++) {
-								maxi = i;
-								for (var j = i + 1; j < arr.length; j ++) {
-									if (arr[maxi].y < arr[j].y) {
-										maxi = j;
-									}
-								}
-								var tmp = arr[i];
-								arr[i] = arr[maxi];
-								arr[maxi] = tmp;
-							}
-						})(dmgDetails.data);	
-						
-						options.drilldown.series.push(dmgDetails);	
-						
-						dmgseries.push({
-							name: allies[i].name,
-							y: totdmg,
-							portion: 0,
-							drilldown: allies[i].name
-						});
-						grantTotal += totdmg;
-					}
-					
-					for (var i = 0; i < dmgseries.length; i ++) {
-						dmgseries[i].portion = dmgseries[i].y / grantTotal * 100.0;
-					}
-					
-					// sort by damage
-					(function(arr) {
-						var maxi;
-						for (var i = 0; i < arr.length - 1; i ++) {
-							maxi = i;
-							for (var j = i + 1; j < arr.length; j ++) {
-								if (arr[maxi].y < arr[j].y) {
-									maxi = j;
-								}
-							}
-							var tmp = arr[i];
-							arr[i] = arr[maxi];
-							arr[maxi] = tmp;
-						}
-					})(dmgseries);					
-							
-					options.series.push({
-						name: "Damages",
-            			colorByPoint: true,
-						data: dmgseries
-					});			
-					
-					$("#damageAll").highcharts(options);
-				})();
-				
-				(function() {
-					// dpsAll
-					options = {
-						title: {
-							text: 'Damage Per Second',
-							x: -20 //center
-						},
-						xAxis: {
-							categories: []
-						},
-						yAxis: {
-							title: {
-								text: 'DPS'
-							},
-							plotLines: [{
-								value: 0,
-								width: 1,
-								color: '#1d1d1d'
-							}]
-						},
-						tooltip: {
-							valueSuffix: '',
-							pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
-						},
-						legend: {
-							layout: 'vertical',
-							align: 'right',
-							verticalAlign: 'middle',
-							borderWidth: 0
-						},
-						series: []
-					};
-		
-					var serieses = [];
-					var tots = [];
-					$.each(allies, function () {
-						serieses.push([]);
-						tots.push(0);
-					});	
-					var blocks = Math.ceil((tm1 - tm0) / TIME_INTERVAL) + 1;
-					var windex = 0;
-					for (var i = 0; i < blocks; i++) {
-						var tmmax = (i + 1) * TIME_INTERVAL;
-						options.xAxis.categories.push(tmmax);
-						while (windex < damages.length && parseFloat(damages[windex][1]) - tm0 < tmmax) {
-							if (tm0 < parseFloat(damages[windex][1])) {
-								var index = $.locateInSources(damages[windex][2], allies);
-								if (index != -1) {
-									tots[index] += parseFloat(damages[windex][5]);
-								}
-							}
-							windex ++;	
-						}
-						$.each(allies, function (i) {
-							serieses[i].push(tots[i] / tmmax);
-						});	
-					}
-					$.each(allies, function (i) {
-						options.series.push({
-							name: allies[i].name,
-							visible: allies[i].type == "dps" || allies[i].type == "tank" || allies[i].type == "minion",
-							data: serieses[i]
-						});
-					});						
-					$("#dpsAll").highcharts(options);
-				})();
-			})();
-			
-// --------------------- healing part ------------------------------------	
-			
-			(function() {			
-				// healings all
-				(function() {
-					var options = {
-						chart: {
-							type: 'bar'
-						},
-						title: {
-							text: 'Healings Done By All Players'
-						},
-						colors: [
-							'#f15c80', '#90ed7d'
-						],
-						xAxis: {
-							categories: [], // 'Element', ...
-							labels: {
-								format: '<div class="hpsLabel" onclick="healingDrill(\'{value}\')">{value}</div>',
-								useHTML: true
-							}
-						},
-						yAxis: {
-							min: 0,
-							title: {
-								text: null
-							}
-						},
-						tooltip: {
-							pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
-						},
-						legend: {
-							reversed: true
-						},
-						plotOptions: {
-							series: {
-								stacking: 'normal'
-							}
-						},
-						series: []/*{
-							name: 'Overflow',
-							data: [5, 3, 4, 7, 2]
-						}, {
-							name: 'Effective',
-							data: [3, 4, 4, 2, 5]
-						}*/
-					};
-		
-					var fillSeries = [], tmpHeal = [];
-					var fillEffective = [], fillOverflow = [];
-					for (var i = 0; i < allies.length; i ++) {
-						var sumEffect = 0.0;
-						var sumOverflow = 0.0;
-						for (var ii = 0; ii < heals.length; ii ++) {
-							if (heals[ii][2] == allies[i].name) {
-								var tmnow = parseFloat(heals[ii][1]);
-								if (tm0 <= tmnow && tmnow <= tm1) {
-									sumEffect += parseFloat(heals[ii][5]);
-									sumOverflow += parseFloat(heals[ii][6]);
-								}
-							}
-						}	
-						var datases = [];
-						datases.push(allies[i].name);
-						datases.push(sumEffect + sumOverflow);
-						datases.push(sumOverflow);
-						datases.push(sumEffect);
-						tmpHeal.push(datases);
-					}
-					$.sort2DArrayByIndex(tmpHeal, 1);
-					for (var i = 0; i < tmpHeal.length; i ++) {
-						options.xAxis.categories.push(tmpHeal[i][0]);
-						fillOverflow.push(tmpHeal[i][2]);
-						fillEffective.push(tmpHeal[i][3]);
-					}
-					options.series.push({
-						name: "Overflow",
-						data: fillOverflow
-					});
-					options.series.push({
-						name: "Effective",
-						data: fillEffective
-					});
-					
-					$("#healingAll").highcharts(options);
-				})();
-				
-				(function() {
-					//hpsAll
-					options = {
-						title: {
-							text: 'Healing Per Second',
-							x: -20 //center
-						},
-						xAxis: {
-							categories: []
-						},
-						yAxis: {
-							title: {
-								text: 'HPS'
-							},
-							plotLines: [{
-								value: 0,
-								width: 1,
-								color: '#1d1d1d'
-							}]
-						},
-						tooltip: {
-							valueSuffix: '',
-							pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
-						},
-						legend: {
-							layout: 'vertical',
-							align: 'right',
-							verticalAlign: 'middle',
-							borderWidth: 0
-						},
-						series: []
-					};
-					
-					var serieses = [];
-					var tots = [];
-					$.each(allies, function () {
-						serieses.push([]);
-						tots.push(0);
-					});	
-					var blocks = Math.ceil((tm1 - tm0) / TIME_INTERVAL) + 1;
-					var windex = 0;
-					for (var i = 0; i < blocks; i++) {
-						var tmmax = (i + 1) * TIME_INTERVAL;
-						options.xAxis.categories.push(tmmax);
-						while (windex < heals.length && parseFloat(heals[windex][1]) - tm0 < tmmax) {
-							if (tm0 < parseFloat(heals[windex][1])) {
-								var index = $.locateInSources(heals[windex][2], allies);
-								if (index != -1) {
-									tots[index] += parseFloat(heals[windex][5]) + parseFloat(heals[windex][6]);
-								}
-							}
-							windex ++;	
-						}
-						$.each(allies, function (i) {
-							serieses[i].push(tots[i] / tmmax);
-						});	
-					}
-					$.each(allies, function (i) {
-						options.series.push({
-							name: allies[i].name,
-							visible: allies[i].type == "healer",
-							data: serieses[i]
-						});
-					});						
-					$("#hpsAll").highcharts(options);
-				})();
-			})();
-			
+            (function() {            
+                // damageAll
+                (function() {
+                    var options = {
+                        chart: {
+                            type: 'bar'
+                        },
+                        title: {
+                            text: '总伤害（点击伤害条查看详情）'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            labels: {
+                                style: {
+                                    fontSize: '13px',
+                                    fontFamily: 'Verdana, sans-serif'
+                                }
+                            }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: null
+                            }
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        tooltip: {
+                            pointFormat: 'Total damage: <b>{point.y:.2f} ({point.portion:.2f}%)</b>'
+                        },
+                        series: [],
+                        drilldown:{            
+                            drillUpButton: {
+                                relativeTo: 'spacingBox',
+                                position: {
+                                    y: 0,
+                                    x: 0
+                                }                
+                            },
+                            series: []
+                        }
+                    };
+        
+                    var dmgseries = [];
+                    //var drilldown.series = []; // list of {id: "", colorByPoint: true, data: [{name: "asd", y: 12, portion: 50},{},{},...]}
+                    var grantTotal = 0.0;
+                    for (var i = 0; i < allies.length; i ++) {
+                        var totdmg = 0.0;
+                        var dmgDetails = {
+                            id: allies[i].name,
+                            colorByPoint: true,
+                            data: []
+                        };
+                        for (var j = 0; j < damages.length; j ++) {
+                            if (damages[j][2] == allies[i].name) {
+                                var tmnow = parseFloat(damages[j][1]);
+                                if (tm0 <= tmnow && tmnow <= tm1) {
+                                    var tmpSubDmg = parseFloat(damages[j][5]);
+                                    totdmg += tmpSubDmg;
+                                    var abilIndex = (function(ite, arr) {
+                                        for (var k = 0; k < arr.length; k ++) {
+                                            if (ite == arr[k].name) {
+                                                return k;
+                                            }
+                                        }
+                                        return -1;
+                                    })(damages[j][4], dmgDetails.data);
+                                    if (abilIndex == -1) {
+                                        dmgDetails.data.push({
+                                            name: damages[j][4],
+                                            y: tmpSubDmg,
+                                            portion: 0
+                                        });
+                                    } else {
+                                        dmgDetails.data[abilIndex].y += tmpSubDmg;
+                                    }
+                                }
+                            }
+                        }
+                        for (var j = 0; j < dmgDetails.data.length; j ++) {
+                            dmgDetails.data[j].portion = dmgDetails.data[j].y / totdmg * 100.0;
+                        }
+                        
+                        // sort by damage
+                        (function(arr) {
+                            var maxi;
+                            for (var i = 0; i < arr.length - 1; i ++) {
+                                maxi = i;
+                                for (var j = i + 1; j < arr.length; j ++) {
+                                    if (arr[maxi].y < arr[j].y) {
+                                        maxi = j;
+                                    }
+                                }
+                                var tmp = arr[i];
+                                arr[i] = arr[maxi];
+                                arr[maxi] = tmp;
+                            }
+                        })(dmgDetails.data);    
+                        
+                        options.drilldown.series.push(dmgDetails);    
+                        
+                        dmgseries.push({
+                            name: allies[i].name,
+                            y: totdmg,
+                            portion: 0,
+                            drilldown: allies[i].name
+                        });
+                        grantTotal += totdmg;
+                    }
+                    
+                    for (var i = 0; i < dmgseries.length; i ++) {
+                        dmgseries[i].portion = dmgseries[i].y / grantTotal * 100.0;
+                    }
+                    
+                    // sort by damage
+                    (function(arr) {
+                        var maxi;
+                        for (var i = 0; i < arr.length - 1; i ++) {
+                            maxi = i;
+                            for (var j = i + 1; j < arr.length; j ++) {
+                                if (arr[maxi].y < arr[j].y) {
+                                    maxi = j;
+                                }
+                            }
+                            var tmp = arr[i];
+                            arr[i] = arr[maxi];
+                            arr[maxi] = tmp;
+                        }
+                    })(dmgseries);                    
+                            
+                    options.series.push({
+                        name: "Damages",
+                        colorByPoint: true,
+                        data: dmgseries
+                    });            
+                    
+                    $("#damageAll").highcharts(options);
+                })();
+                
+                (function() {
+                    // dpsAll
+                    options = {
+                        title: {
+                            text: 'DPS曲线',
+                            x: -20 //center
+                        },
+                        xAxis: {
+                            categories: []
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'DPS'
+                            },
+                            plotLines: [{
+                                value: 0,
+                                width: 1,
+                                color: '#1d1d1d'
+                            }]
+                        },
+                        tooltip: {
+                            valueSuffix: '',
+                            pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            borderWidth: 0
+                        },
+                        series: []
+                    };
+        
+                    var serieses = [];
+                    var tots = [];
+                    $.each(allies, function () {
+                        serieses.push([]);
+                        tots.push(0);
+                    });    
+                    var blocks = Math.ceil((tm1 - tm0) / TIME_INTERVAL) + 1;
+                    var windex = 0;
+                    for (var i = 0; i < blocks; i++) {
+                        var tmmax = (i + 1) * TIME_INTERVAL;
+                        options.xAxis.categories.push(tmmax);
+                        while (windex < damages.length && parseFloat(damages[windex][1]) - tm0 < tmmax) {
+                            if (tm0 < parseFloat(damages[windex][1])) {
+                                var index = $.locateInSources(damages[windex][2], allies);
+                                if (index != -1) {
+                                    tots[index] += parseFloat(damages[windex][5]);
+                                }
+                            }
+                            windex ++;    
+                        }
+                        $.each(allies, function (i) {
+                            serieses[i].push(tots[i] / tmmax);
+                        });    
+                    }
+                    $.each(allies, function (i) {
+                        options.series.push({
+                            name: allies[i].name,
+                            visible: allies[i].type == "dps" || allies[i].type == "tank" || allies[i].type == "minion",
+                            data: serieses[i]
+                        });
+                    });                        
+                    $("#dpsAll").highcharts(options);
+                })();
+            })();
+            
+// --------------------- healing part ------------------------------------    
+            
+            (function() {            
+                // healings all
+                (function() {
+                    var options = {
+                        chart: {
+                            type: 'bar'
+                        },
+                        title: {
+                            text: '总治疗（点击名字查看详情）'
+                        },
+                        colors: [
+                            '#f15c80', '#90ed7d'
+                        ],
+                        xAxis: {
+                            categories: [], // 'Element', ...
+                            labels: {
+                                format: '<div class="hpsLabel" onclick="healingDrill(\'{value}\')">{value}</div>',
+                                useHTML: true
+                            }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: null
+                            }
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
+                        },
+                        legend: {
+                            reversed: true
+                        },
+                        plotOptions: {
+                            series: {
+                                stacking: 'normal'
+                            }
+                        },
+                        series: []/*{
+                            name: 'Overflow',
+                            data: [5, 3, 4, 7, 2]
+                        }, {
+                            name: 'Effective',
+                            data: [3, 4, 4, 2, 5]
+                        }*/
+                    };
+        
+                    var fillSeries = [], tmpHeal = [];
+                    var fillEffective = [], fillOverflow = [];
+                    for (var i = 0; i < allies.length; i ++) {
+                        var sumEffect = 0.0;
+                        var sumOverflow = 0.0;
+                        for (var ii = 0; ii < heals.length; ii ++) {
+                            if (heals[ii][2] == allies[i].name) {
+                                var tmnow = parseFloat(heals[ii][1]);
+                                if (tm0 <= tmnow && tmnow <= tm1) {
+                                    sumEffect += parseFloat(heals[ii][5]);
+                                    sumOverflow += parseFloat(heals[ii][6]);
+                                }
+                            }
+                        }    
+                        var datases = [];
+                        datases.push(allies[i].name);
+                        datases.push(sumEffect + sumOverflow);
+                        datases.push(sumOverflow);
+                        datases.push(sumEffect);
+                        tmpHeal.push(datases);
+                    }
+                    $.sort2DArrayByIndex(tmpHeal, 1);
+                    for (var i = 0; i < tmpHeal.length; i ++) {
+                        options.xAxis.categories.push(tmpHeal[i][0]);
+                        fillOverflow.push(tmpHeal[i][2]);
+                        fillEffective.push(tmpHeal[i][3]);
+                    }
+                    options.series.push({
+                        name: "Overflow",
+                        data: fillOverflow
+                    });
+                    options.series.push({
+                        name: "Effective",
+                        data: fillEffective
+                    });
+                    
+                    $("#healingAll").highcharts(options);
+                })();
+                
+                (function() {
+                    //hpsAll
+                    options = {
+                        title: {
+                            text: 'HPS曲线',
+                            x: -20 //center
+                        },
+                        xAxis: {
+                            categories: []
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'HPS'
+                            },
+                            plotLines: [{
+                                value: 0,
+                                width: 1,
+                                color: '#1d1d1d'
+                            }]
+                        },
+                        tooltip: {
+                            valueSuffix: '',
+                            pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            borderWidth: 0
+                        },
+                        series: []
+                    };
+                    
+                    var serieses = [];
+                    var tots = [];
+                    $.each(allies, function () {
+                        serieses.push([]);
+                        tots.push(0);
+                    });    
+                    var blocks = Math.ceil((tm1 - tm0) / TIME_INTERVAL) + 1;
+                    var windex = 0;
+                    for (var i = 0; i < blocks; i++) {
+                        var tmmax = (i + 1) * TIME_INTERVAL;
+                        options.xAxis.categories.push(tmmax);
+                        while (windex < heals.length && parseFloat(heals[windex][1]) - tm0 < tmmax) {
+                            if (tm0 < parseFloat(heals[windex][1])) {
+                                var index = $.locateInSources(heals[windex][2], allies);
+                                if (index != -1) {
+                                    tots[index] += parseFloat(heals[windex][5]) + parseFloat(heals[windex][6]);
+                                }
+                            }
+                            windex ++;    
+                        }
+                        $.each(allies, function (i) {
+                            serieses[i].push(tots[i] / tmmax);
+                        });    
+                    }
+                    $.each(allies, function (i) {
+                        options.series.push({
+                            name: allies[i].name,
+                            visible: allies[i].type == "healer",
+                            data: serieses[i]
+                        });
+                    });                        
+                    $("#hpsAll").highcharts(options);
+                })();
+            })();
+            
 // ----------------------- Damage Taken Part ----------------------------
-			(function() {			
-				// damage taken All
-				(function() {
-					var options = {
-						chart: {
-							type: 'bar'
-						},
-						title: {
-							text: 'Damages Taken By All Players'
-						},
-						xAxis: {
-							type: 'category',
-							labels: {
-								style: {
-									fontSize: '13px',
-									fontFamily: 'Verdana, sans-serif'
-								}
-							}
-						},
-						yAxis: {
-							min: 0,
-							title: {
-								text: null
-							}
-						},
-						legend: {
-							enabled: false
-						},
-						tooltip: {
-							pointFormat: 'Total damage taken: <b>{point.y:.2f} ({point.portion:.2f}%)</b>'
-						},
-						series: [],
-						drilldown:{            
-							drillUpButton: {
-								relativeTo: 'spacingBox',
-								position: {
-									y: 0,
-									x: 0
-								}				
-							},
-							series: []
-						}
-					};
-		
-					var dmgseries = [];
-					//var drilldown.series = []; // list of {id: "", colorByPoint: true, data: [{name: "asd", y: 12, portion: 50},{},{},...]}
-					var grantTotal = 0.0;
-					for (var i = 0; i < allies.length; i ++) {
-						var totdmg = 0.0;
-						var dmgDetails = {
-							id: allies[i].name,
-							colorByPoint: true,
-							data: []
-						};
-						for (var j = 0; j < damages.length; j ++) {
-							if (damages[j][3] == allies[i].name) {	// I'm the one who takes the damage
-								var tmnow = parseFloat(damages[j][1]);
-								if (tm0 <= tmnow && tmnow <= tm1) {
-									var tmpSubDmg = parseFloat(damages[j][5]);
-									totdmg += tmpSubDmg;
-									var abilIndex = (function(ite, arr) {
-										for (var k = 0; k < arr.length; k ++) {
-											if (ite == arr[k].name) {
-												return k;
-											}
-										}
-										return -1;
-									})(damages[j][4], dmgDetails.data);
-									if (abilIndex == -1) {
-										dmgDetails.data.push({
-											name: damages[j][4],
-											y: tmpSubDmg,
-											portion: 0
-										});
-									} else {
-										dmgDetails.data[abilIndex].y += tmpSubDmg;
-									}
-								}
-							}
-						}
-						for (var j = 0; j < dmgDetails.data.length; j ++) {
-							dmgDetails.data[j].portion = dmgDetails.data[j].y / totdmg * 100.0;
-						}
-						
-						// sort by damage inside
-						(function(arr) {
-							var maxi;
-							for (var i = 0; i < arr.length - 1; i ++) {
-								maxi = i;
-								for (var j = i + 1; j < arr.length; j ++) {
-									if (arr[maxi].y < arr[j].y) {
-										maxi = j;
-									}
-								}
-								var tmp = arr[i];
-								arr[i] = arr[maxi];
-								arr[maxi] = tmp;
-							}
-						})(dmgDetails.data);	
-						
-						options.drilldown.series.push(dmgDetails);	
-						
-						dmgseries.push({
-							name: allies[i].name,
-							y: totdmg,
-							portion: 0,
-							drilldown: allies[i].name
-						});
-						grantTotal += totdmg;
-					}
-					
-					for (var i = 0; i < dmgseries.length; i ++) {
-						dmgseries[i].portion = dmgseries[i].y / grantTotal * 100.0;
-					}
-					
-					// sort by damage
-					(function(arr) {
-						var maxi;
-						for (var i = 0; i < arr.length - 1; i ++) {
-							maxi = i;
-							for (var j = i + 1; j < arr.length; j ++) {
-								if (arr[maxi].y < arr[j].y) {
-									maxi = j;
-								}
-							}
-							var tmp = arr[i];
-							arr[i] = arr[maxi];
-							arr[maxi] = tmp;
-						}
-					})(dmgseries);					
-							
-					options.series.push({
-						name: "Damages",
-            			colorByPoint: true,
-						data: dmgseries
-					});			
-					
-					$("#damageTakenAll").highcharts(options);
-				})();
-								
-				(function() {
-					// dtpsAll
-					options = {
-						title: {
-							text: 'Damage Taken Per Second',
-							x: -20 //center
-						},
-						xAxis: {
-							categories: []
-						},
-						yAxis: {
-							title: {
-								text: 'DTPS'
-							},
-							plotLines: [{
-								value: 0,
-								width: 1,
-								color: '#1d1d1d'
-							}]
-						},
-						tooltip: {
-							valueSuffix: '',
-							pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
-						},
-						legend: {
-							layout: 'vertical',
-							align: 'right',
-							verticalAlign: 'middle',
-							borderWidth: 0
-						},
-						series: []
-					};
-		
-					var serieses = [];
-					var tots = [];
-					$.each(allies, function () {
-						serieses.push([]);
-						tots.push(0);
-					});	
-					var blocks = Math.ceil((tm1 - tm0) / TIME_INTERVAL) + 1;
-					var windex = 0;
-					for (var i = 0; i < blocks; i++) {
-						var tmmax = (i + 1) * TIME_INTERVAL;
-						options.xAxis.categories.push(tmmax);
-						while (windex < damages.length && parseFloat(damages[windex][1]) - tm0 < tmmax) {
-							if (tm0 < parseFloat(damages[windex][1])) {
-								var index = $.locateInSources(damages[windex][3], allies);
-								if (index != -1) {
-									tots[index] += parseFloat(damages[windex][5]);
-								}
-							}
-							windex ++;	
-						}
-						$.each(allies, function (i) {
-							serieses[i].push(tots[i] / tmmax);
-						});	
-					}
-					$.each(allies, function (i) {
-						options.series.push({
-							name: allies[i].name,
-							visible: allies[i].type == "dps" || allies[i].type == "tank" || allies[i].type == "healer" || allies[i].type == "minion",
-							data: serieses[i]
-						});
-					});						
-					$("#dtpsAll").highcharts(options);
-				})();
-			})();
-			
+            (function() {            
+                // damage taken All
+                (function() {
+                    var options = {
+                        chart: {
+                            type: 'bar'
+                        },
+                        title: {
+                            text: '受到伤害（点击伤害条查看详情）'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            labels: {
+                                style: {
+                                    fontSize: '13px',
+                                    fontFamily: 'Verdana, sans-serif'
+                                }
+                            }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: null
+                            }
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        tooltip: {
+                            pointFormat: 'Total damage taken: <b>{point.y:.2f} ({point.portion:.2f}%)</b>'
+                        },
+                        series: [],
+                        drilldown:{            
+                            drillUpButton: {
+                                relativeTo: 'spacingBox',
+                                position: {
+                                    y: 0,
+                                    x: 0
+                                }                
+                            },
+                            series: []
+                        }
+                    };
+        
+                    var dmgseries = [];
+                    //var drilldown.series = []; // list of {id: "", colorByPoint: true, data: [{name: "asd", y: 12, portion: 50},{},{},...]}
+                    var grantTotal = 0.0;
+                    for (var i = 0; i < allies.length; i ++) {
+                        var totdmg = 0.0;
+                        var dmgDetails = {
+                            id: allies[i].name,
+                            colorByPoint: true,
+                            data: []
+                        };
+                        for (var j = 0; j < damages.length; j ++) {
+                            if (damages[j][3] == allies[i].name) {    // I'm the one who takes the damage
+                                var tmnow = parseFloat(damages[j][1]);
+                                if (tm0 <= tmnow && tmnow <= tm1) {
+                                    var tmpSubDmg = parseFloat(damages[j][5]);
+                                    totdmg += tmpSubDmg;
+                                    var abilIndex = (function(ite, arr) {
+                                        for (var k = 0; k < arr.length; k ++) {
+                                            if (ite == arr[k].name) {
+                                                return k;
+                                            }
+                                        }
+                                        return -1;
+                                    })(damages[j][4], dmgDetails.data);
+                                    if (abilIndex == -1) {
+                                        dmgDetails.data.push({
+                                            name: damages[j][4],
+                                            y: tmpSubDmg,
+                                            portion: 0
+                                        });
+                                    } else {
+                                        dmgDetails.data[abilIndex].y += tmpSubDmg;
+                                    }
+                                }
+                            }
+                        }
+                        for (var j = 0; j < dmgDetails.data.length; j ++) {
+                            dmgDetails.data[j].portion = dmgDetails.data[j].y / totdmg * 100.0;
+                        }
+                        
+                        // sort by damage inside
+                        (function(arr) {
+                            var maxi;
+                            for (var i = 0; i < arr.length - 1; i ++) {
+                                maxi = i;
+                                for (var j = i + 1; j < arr.length; j ++) {
+                                    if (arr[maxi].y < arr[j].y) {
+                                        maxi = j;
+                                    }
+                                }
+                                var tmp = arr[i];
+                                arr[i] = arr[maxi];
+                                arr[maxi] = tmp;
+                            }
+                        })(dmgDetails.data);    
+                        
+                        options.drilldown.series.push(dmgDetails);    
+                        
+                        dmgseries.push({
+                            name: allies[i].name,
+                            y: totdmg,
+                            portion: 0,
+                            drilldown: allies[i].name
+                        });
+                        grantTotal += totdmg;
+                    }
+                    
+                    for (var i = 0; i < dmgseries.length; i ++) {
+                        dmgseries[i].portion = dmgseries[i].y / grantTotal * 100.0;
+                    }
+                    
+                    // sort by damage
+                    (function(arr) {
+                        var maxi;
+                        for (var i = 0; i < arr.length - 1; i ++) {
+                            maxi = i;
+                            for (var j = i + 1; j < arr.length; j ++) {
+                                if (arr[maxi].y < arr[j].y) {
+                                    maxi = j;
+                                }
+                            }
+                            var tmp = arr[i];
+                            arr[i] = arr[maxi];
+                            arr[maxi] = tmp;
+                        }
+                    })(dmgseries);                    
+                            
+                    options.series.push({
+                        name: "Damages",
+                        colorByPoint: true,
+                        data: dmgseries
+                    });            
+                    
+                    $("#damageTakenAll").highcharts(options);
+                })();
+                                
+                (function() {
+                    // dtpsAll
+                    options = {
+                        title: {
+                            text: 'DTPS曲线',
+                            x: -20 //center
+                        },
+                        xAxis: {
+                            categories: []
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'DTPS'
+                            },
+                            plotLines: [{
+                                value: 0,
+                                width: 1,
+                                color: '#1d1d1d'
+                            }]
+                        },
+                        tooltip: {
+                            valueSuffix: '',
+                            pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            borderWidth: 0
+                        },
+                        series: []
+                    };
+        
+                    var serieses = [];
+                    var tots = [];
+                    $.each(allies, function () {
+                        serieses.push([]);
+                        tots.push(0);
+                    });    
+                    var blocks = Math.ceil((tm1 - tm0) / TIME_INTERVAL) + 1;
+                    var windex = 0;
+                    for (var i = 0; i < blocks; i++) {
+                        var tmmax = (i + 1) * TIME_INTERVAL;
+                        options.xAxis.categories.push(tmmax);
+                        while (windex < damages.length && parseFloat(damages[windex][1]) - tm0 < tmmax) {
+                            if (tm0 < parseFloat(damages[windex][1])) {
+                                var index = $.locateInSources(damages[windex][3], allies);
+                                if (index != -1) {
+                                    tots[index] += parseFloat(damages[windex][5]);
+                                }
+                            }
+                            windex ++;    
+                        }
+                        $.each(allies, function (i) {
+                            serieses[i].push(tots[i] / tmmax);
+                        });    
+                    }
+                    $.each(allies, function (i) {
+                        options.series.push({
+                            name: allies[i].name,
+                            visible: allies[i].type == "dps" || allies[i].type == "tank" || allies[i].type == "healer" || allies[i].type == "minion",
+                            data: serieses[i]
+                        });
+                    });                        
+                    $("#dtpsAll").highcharts(options);
+                })();
+            })();
+            
 //----------------------------- Cast Part --------------------------------
-			(function() {			
-				// cast all
-				(function() {
-					var options = {
-						chart: {
-							type: 'bar'
-						},
-						title: {
-							text: 'Casts By All Players'
-						},
-						xAxis: {
-							type: 'category',
-							labels: {
-								format: '<div class="hpsLabel" onclick="castDrill(\'{value}\')">{value}</div>',
-								useHTML: true
-							}
-						},
-						yAxis: {
-							min: 0,
-							title: {
-								text: null
-							}
-						},
-						tooltip: {
-							pointFormat: 'Number of casts: <b>{point.y:.0f}</b>'
-						},
-						legend: {
-							enabled: false
-						},
-						series: []
-					};
-		
-					var fillData = [];
-					for (var i = 0; i < allies.length; i ++) {
-						var sumCast = 0;
-						for (var ii = 0; ii < casts.length; ii ++) {
-							if (casts[ii][2] == allies[i].name) {
-								var tmnow = parseFloat(casts[ii][1]);
-								if (tm0 <= tmnow && tmnow <= tm1) {
-									sumCast += 1;
-								}
-							}
-						}	
-						fillData.push({
-							name: allies[i].name,
-							y: sumCast
-						});
-					}
-					// sort all
-					(function(arr) {
-						var maxi;
-						for (var i = 0; i < arr.length - 1; i ++) {
-							maxi = i;
-							for (var j = i + 1; j < arr.length; j ++) {
-								if (arr[maxi].y < arr[j].y) {
-									maxi = j;
-								}
-							}
-							var tmp = arr[i];
-							arr[i] = arr[maxi];
-							arr[maxi] = tmp;
-						}
-					})(fillData);
-					
-					// push data
-					options.series.push({
-						name: 'damages',
-						colorByPoint: true,
-						data: fillData
-					});
-					
-					$("#castAll").highcharts(options);
-					castDrill(fillData[0].name);
-				})();
-			})();					
-			
+            (function() {            
+                // cast all
+                (function() {
+                    var options = {
+                        chart: {
+                            type: 'bar'
+                        },
+                        title: {
+                            text: '施法统计'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            labels: {
+                                format: '<div class="hpsLabel" onclick="castDrill(\'{value}\')">{value}</div>',
+                                useHTML: true
+                            }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: null
+                            }
+                        },
+                        tooltip: {
+                            pointFormat: 'Number of casts: <b>{point.y:.0f}</b>'
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        series: []
+                    };
+        
+                    var fillData = [];
+                    for (var i = 0; i < allies.length; i ++) {
+                        var sumCast = 0;
+                        for (var ii = 0; ii < casts.length; ii ++) {
+                            if (casts[ii][2] == allies[i].name) {
+                                var tmnow = parseFloat(casts[ii][1]);
+                                if (tm0 <= tmnow && tmnow <= tm1) {
+                                    sumCast += 1;
+                                }
+                            }
+                        }    
+                        fillData.push({
+                            name: allies[i].name,
+                            y: sumCast
+                        });
+                    }
+                    // sort all
+                    (function(arr) {
+                        var maxi;
+                        for (var i = 0; i < arr.length - 1; i ++) {
+                            maxi = i;
+                            for (var j = i + 1; j < arr.length; j ++) {
+                                if (arr[maxi].y < arr[j].y) {
+                                    maxi = j;
+                                }
+                            }
+                            var tmp = arr[i];
+                            arr[i] = arr[maxi];
+                            arr[maxi] = tmp;
+                        }
+                    })(fillData);
+                    
+                    // push data
+                    options.series.push({
+                        name: 'damages',
+                        colorByPoint: true,
+                        data: fillData
+                    });
+                    
+                    $("#castAll").highcharts(options);
+                    castDrill(fillData[0].name);
+                })();
+            })();                    
+            
 //----------------------------- Mana Part --------------------------------
-			(function() {			
-				// mana all
-				(function() {					
-					// init data array
-					var fillData = [];
-					for (var i = 0; i < manas.length; i ++) {
-						var index = (function(arr, ind) {
-							for (var ii = 0; ii < arr.length; ii ++) {
-								if (arr[ii].name == ind) {
-									return ii;
-								}
-							}
-							return -1;
-						})(fillData, manas[i][2]);
-						if (index == -1) {
-							fillData.push({
-								name: manas[i][2],
-								y: parseFloat(manas[i][4])
-							});
-							if (fillData.length >= allies.length) {
-								i += manas.length;
-							}
-						}
-					}
-					
-					// sort all
-					(function(arr) {
-						var maxi;
-						for (var i = 0; i < arr.length - 1; i ++) {
-							maxi = i;
-							for (var j = i + 1; j < arr.length; j ++) {
-								if (arr[maxi].y < arr[j].y) {
-									maxi = j;
-								}
-							}
-							var tmp = arr[i];
-							arr[i] = arr[maxi];
-							arr[maxi] = tmp;
-						}
-					})(fillData);
-					
-					//console.log(fillData);
-					
-					// push data
-					var options = {
-						chart: {
-							type: 'bar'
-						},
-						title: {
-							text: 'Max Mana of All Players'
-						},
-						xAxis: {
-							type: 'category',
-							labels: {
-								style: {
-									fontSize: '13px',
-									fontFamily: 'Verdana, sans-serif'
-								}
-							}
-						},
-						yAxis: {
-							min: 0,
-							title: {
-								text: null
-							}
-						},
-						tooltip: {
-							pointFormat: 'Max mana: <b>{point.y:.0f}</b>'
-						},
-						legend: {
-							enabled: false
-						},
-						series: [{
-							name: 'damages',
-							colorByPoint: true,
-							data: fillData
-						}]
-					};
-					
-					// plot
-					$("#manaAll").highcharts(options);
-				})();
-				
-				(function() {
-					// mana curve for all
-					options = {
-						title: {
-							text: 'Mana curve',
-							x: -20 //center
-						},
-						xAxis: {
-							categories: []
-						},
-						yAxis: {
-							title: {
-								text: 'Percentage'
-							},
-							plotLines: [{
-								value: 0,
-								width: 1,
-								color: '#1d1d1d'
-							}]
-						},
-						tooltip: {
-							valueSuffix: '',
-							pointFormat: '{series.name}: <b>{point.y:.2f}%</b>'
-						},
-						legend: {
-							layout: 'vertical',
-							align: 'right',
-							verticalAlign: 'middle',
-							borderWidth: 0
-						},
-						series: []
-					};
-		
-					var serieses = [];
-					var tots = [];
-					$.each(allies, function () {
-						serieses.push([]);
-						tots.push(0);
-					});	
-					var blocks = Math.ceil((tm1 - tm0) / TIME_INTERVAL) + 1;
-					var windex = 0;
-					for (var i = 0; i < blocks; i++) {
-						var tmmax = (i + 1) * TIME_INTERVAL;
-						options.xAxis.categories.push(tmmax);
-						while (windex < manas.length && parseFloat(manas[windex][1]) - tm0 < tmmax) {
-							if (tm0 < parseFloat(manas[windex][1])) {
-								var index = $.locateInSources(manas[windex][2], allies);
-								if (index != -1) {
-									tots[index] = windex;
-								}
-							}
-							windex ++;	
-						}
-						for (var ii = 0; ii < allies.length; ii ++) {
-							var numerator = parseFloat(manas[tots[ii]][3]);
-							var denominator = parseFloat(manas[tots[ii]][4]);
-							if (denominator < 1) {denominator = 1;}
-							serieses[ii].push(numerator / denominator);
-						}
-					}
-					//console.log(serieses);
-					$.each(allies, function (i) {
-						options.series.push({
-							name: allies[i].name,
-							visible: true,
-							data: serieses[i]
-						});
-					});						
-					$("#manaOne").highcharts(options);
-				})();
-			})();		
-			
-        });				
+            (function() {            
+                // mana all
+                (function() {                    
+                    // init data array
+                    var fillData = [];
+                    for (var i = 0; i < manas.length; i ++) {
+                        var index = (function(arr, ind) {
+                            for (var ii = 0; ii < arr.length; ii ++) {
+                                if (arr[ii].name == ind) {
+                                    return ii;
+                                }
+                            }
+                            return -1;
+                        })(fillData, manas[i][2]);
+                        if (index == -1) {
+                            fillData.push({
+                                name: manas[i][2],
+                                y: parseFloat(manas[i][4])
+                            });
+                            if (fillData.length >= allies.length) {
+                                i += manas.length;
+                            }
+                        }
+                    }
+                    
+                    // sort all
+                    (function(arr) {
+                        var maxi;
+                        for (var i = 0; i < arr.length - 1; i ++) {
+                            maxi = i;
+                            for (var j = i + 1; j < arr.length; j ++) {
+                                if (arr[maxi].y < arr[j].y) {
+                                    maxi = j;
+                                }
+                            }
+                            var tmp = arr[i];
+                            arr[i] = arr[maxi];
+                            arr[maxi] = tmp;
+                        }
+                    })(fillData);
+                    
+                    //console.log(fillData);
+                    
+                    // push data
+                    var options = {
+                        chart: {
+                            type: 'bar'
+                        },
+                        title: {
+                            text: '总法力值'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            labels: {
+                                style: {
+                                    fontSize: '13px',
+                                    fontFamily: 'Verdana, sans-serif'
+                                }
+                            }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: null
+                            }
+                        },
+                        tooltip: {
+                            pointFormat: 'Max mana: <b>{point.y:.0f}</b>'
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        series: [{
+                            name: 'damages',
+                            colorByPoint: true,
+                            data: fillData
+                        }]
+                    };
+                    
+                    // plot
+                    $("#manaAll").highcharts(options);
+                })();
+                
+                (function() {
+                    // mana curve for all
+                    options = {
+                        title: {
+                            text: '法力消耗曲线',
+                            x: -20 //center
+                        },
+                        xAxis: {
+                            categories: []
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Percentage'
+                            },
+                            plotLines: [{
+                                value: 0,
+                                width: 1,
+                                color: '#1d1d1d'
+                            }]
+                        },
+                        tooltip: {
+                            valueSuffix: '',
+                            pointFormat: '{series.name}: <b>{point.y:.2f}%</b>'
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            borderWidth: 0
+                        },
+                        series: []
+                    };
+        
+                    var serieses = [];
+                    var tots = [];
+                    $.each(allies, function () {
+                        serieses.push([]);
+                        tots.push(0);
+                    });    
+                    var blocks = Math.ceil((tm1 - tm0) / TIME_INTERVAL) + 1;
+                    var windex = 0;
+                    for (var i = 0; i < blocks; i++) {
+                        var tmmax = (i + 1) * TIME_INTERVAL;
+                        options.xAxis.categories.push(tmmax);
+                        while (windex < manas.length && parseFloat(manas[windex][1]) - tm0 < tmmax) {
+                            if (tm0 < parseFloat(manas[windex][1])) {
+                                var index = $.locateInSources(manas[windex][2], allies);
+                                if (index != -1) {
+                                    tots[index] = windex;
+                                }
+                            }
+                            windex ++;    
+                        }
+                        for (var ii = 0; ii < allies.length; ii ++) {
+                            var numerator = parseFloat(manas[tots[ii]][3]);
+                            var denominator = parseFloat(manas[tots[ii]][4]);
+                            if (denominator < 1) {denominator = 1;}
+                            serieses[ii].push(numerator / denominator);
+                        }
+                    }
+                    //console.log(serieses);
+                    $.each(allies, function (i) {
+                        options.series.push({
+                            name: allies[i].name,
+                            visible: true,
+                            data: serieses[i]
+                        });
+                    });                        
+                    $("#manaOne").highcharts(options);
+                })();
+            })();        
+            
+        });                
 
     </script>
 </body>
