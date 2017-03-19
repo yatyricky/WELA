@@ -4,7 +4,7 @@ class Mana extends React.Component {
 
     render() {
         return (
-            <div>This is a Mana panel.</div>
+            <h1 className="page-header">法力曲线</h1>
         );
     }
 

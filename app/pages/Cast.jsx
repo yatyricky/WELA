@@ -4,7 +4,7 @@ class Cast extends React.Component {
 
     render() {
         return (
-            <div>This is a Cast panel.</div>
+            <h1 className="page-header">施法统计</h1>
         );
     }
 

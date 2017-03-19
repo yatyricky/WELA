@@ -4,7 +4,7 @@ class Heal extends React.Component {
 
     render() {
         return (
-            <div>This is a Heal panel.</div>
+            <h1 className="page-header">治疗统计</h1>
         );
     }
 

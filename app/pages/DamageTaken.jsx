@@ -4,7 +4,7 @@ class DamageTaken extends React.Component {
 
     render() {
         return (
-            <div>This is a DamageTaken panel.</div>
+            <h1 className="page-header">承受伤害统计</h1>
         );
     }
 

@@ -7,14 +7,14 @@ class NavigationOptions extends React.Component {
             {
                 if (item.to == "/") {
                     return (
-                        <li key={index} className="active">
-                            <IndexLink to={item.to}>{item.text}</IndexLink>
+                        <li key={index}>
+                            <IndexLink to={item.to} activeClassName="active">{item.text}</IndexLink>
                         </li>
                     );
                 } else {
                     return (
                         <li key={index}>
-                            <Link to={item.to}>{item.text}</Link>
+                            <Link to={item.to} activeClassName="active">{item.text}</Link>
                         </li>
                     );
                 }
@@ -39,7 +39,7 @@ class NavigationCategory extends React.Component {
             )
         );
         return (
-            <div className="col-xs-2">
+            <div className="col-sm-3 col-md-2 sidebar">
                 {categories}
             </div>
         );
@@ -51,29 +51,29 @@ class Navigation extends React.Component {
     render() {
         const menu = [
             {
-                "category": "Fast Navigation",
+                "category": "快速导航",
                 "options": [
                     {
-                        "text": "New",
+                        "text": "新建分析",
                         "to": "/"
                     }, {
-                        "text": "Damage",
+                        "text": "伤害统计",
                         "to": "damage"
                     }, {
-                        "text": "Heal",
+                        "text": "治疗统计",
                         "to": "heal"
                     }, {
-                        "text": "Cast",
+                        "text": "施法统计",
                         "to": "cast"
                     }, {
-                        "text": "Damage Taken",
+                        "text": "承受伤害统计",
                         "to": "damageTaken"
                     }, {
-                        "text": "Mana",
+                        "text": "法力曲线",
                         "to": "mana"}
                 ]
             }, {
-                "category": "Combats",
+                "category": "战斗列表",
                 "options": []
             }
         ];
