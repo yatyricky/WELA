@@ -1,59 +1,67 @@
 import React from 'react';
+import DataStore from '../DataStore.js';
+import FileDrop from 'react-file-drop';
+
+const dragDefaultStyle = "form-control drop-area";
+const dragOverStyle = "form-control drop-area drop-area-drag-over";
 
 class Welcome extends React.Component {
     constructor() {
         super();
-        this.postData = this.postData.bind(this);
         this.state = {
-            "result": "waiting for res"
+            "dropStyle": dragDefaultStyle,
+            "progressI": -1,
+            "progressN": -1
+        }
+        this.dataStore = new DataStore();
+        this.handleFileDrop = this.handleFileDrop.bind(this);
+        this.handleFileOver = this.handleFileOver.bind(this);
+        this.handleFileLeft = this.handleFileLeft.bind(this);
+        this.updateProgress = this.updateProgress.bind(this);
+    }
+
+    renderResult() {
+        if (this.state.progressN < 1) {
+            return (<div />);
+        } else {
+            return (
+                <div>Progress: {`${this.state.progressI}/${this.state.progressN}`}</div>
+            );
         }
     }
 
-    postData(flag) {
-        const xhr = new XMLHttpRequest();
-
-        xhr.open('POST', 'test.php');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-                const obj = JSON.parse(xhr.responseText);
-                console.log(obj);
-                this.setState({result: obj.post.result});
-            } else if (xhr.status !== 200) {
-                console.log('Request failed.  Returned status of ' + xhr.status);
-            }
-        };
-        xhr.send(encodeURI(`result=${flag}`));
-        this.setState({result: "request sent, waiting for response"});
+    handleFileDrop(files, event) {
+        this.dataStore.parse(files, this.updateProgress);
+        this.handleFileLeft(null);
     }
 
-    renderResult(flag) {
-        let ret;
-        switch (flag) {
-            case "success":
-                ret = (
-                    <div>
-                        <h1>{flag}</h1>
-                        <p>I'm quite differernt!</p>
-                    </div>
-                );
-                break;
-            case "fail":
-                ret = (<h2>{flag}</h2>);
-                break;
-            default:
-                ret = (<div>{flag}</div>);
+    updateProgress() {
+        this.setState({
+            "progressI": this.dataStore.doneFiles,
+            "progressN": this.dataStore.numFiles
+        });
+    }
+
+    handleFileOver(event) {
+        if (this.state.dropStyle == dragDefaultStyle) {
+            this.setState({dropStyle: dragOverStyle});
         }
-        return ret;
+    }
+
+    handleFileLeft(event) {
+        if (this.state.dropStyle == dragOverStyle) {
+            this.setState({dropStyle: dragDefaultStyle});
+        }
     }
 
     render() {
         return (
             <div>
-                <h1 className="page-header">将日志文件拖入下方虚线方框内以开始分析</h1>
-                <button className="btn btn-success" onClick={() => this.postData("success")}>To Success</button>
-                <button className="btn btn-danger" onClick={() => this.postData("fail")}>To Fail</button>
-                <div>{this.renderResult(this.state.result)}</div>
+                <h1 className="page-header">将日志文件拖入下方框内以开始分析</h1>
+                <div className="form-group">
+                    <FileDrop className={this.state.dropStyle} frame={document} onDrop={this.handleFileDrop} onDragOver={this.handleFileOver} onDragLeave={this.handleFileLeft} />
+                </div>
+                {this.renderResult()}
             </div>
         );
     }
