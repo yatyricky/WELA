@@ -5,7 +5,6 @@ class Damage extends React.Component {
 
     constructor() {
         super();
-        console.log(new DataStore().time);
     }
 
     render() {

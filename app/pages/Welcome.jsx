@@ -30,16 +30,19 @@ class Welcome extends React.Component {
         }
     }
 
-    handleFileDrop(files, event) {
-        this.dataStore.parse(files, this.updateProgress);
-        this.handleFileLeft(null);
-    }
-
     updateProgress() {
         this.setState({
             "progressI": this.dataStore.doneFiles,
             "progressN": this.dataStore.numFiles
         });
+        if (this.dataStore.hasData()) {
+            // update UI
+        }
+    }
+
+    handleFileDrop(files, event) {
+        this.dataStore.parse(files, this.updateProgress);
+        this.handleFileLeft(null);
     }
 
     handleFileOver(event) {
