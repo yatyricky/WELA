@@ -189,7 +189,17 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 **整个数据文件为纯文本格式，每一行为一条记录，每一条记录遵循一定的标准，使用逗号分隔，该标准为WELA系统的核心所在。**
 
-记录总共分5种，对于每条记录（一位数组），字段的数量不等，每种记录的详细说明如下：
+记录总共分6种，对于每条记录（一位数组），字段的数量不等，每种记录的详细说明如下：
+
+### "def"类型
+
+定义单位的团队定位，用以在记录中自动区分并屏蔽部分单位的显示。比如在DPS曲线中，默认不会显示治疗职业的数据。如果不确定选择何种类型，一律选择"creep"即可。
+
+以下为字段详解：
+
+1. 固定取值为"def"，用以说明该字段为定义单位团队定位
+2. 单位名字，全图唯一。英雄单位请使用名字，普通单位建议加上HandleID值，否则所有同类单位合并统计
+3. 团队定位，取值[tank|healer|dps|minion|boss|creep]
 
 ### "combat"类型
 
@@ -197,8 +207,8 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 以下为字段详解：
 
-* 0: 固定取值为"combat"，用以说明该条记录为战斗状态分割器
-* 1: 时间戳，为当前记录发生的时间，其值为游戏已经流逝的时间
+1. 固定取值为"combat"，用以说明该条记录为战斗状态分割器
+2. 时间戳，为当前记录发生的时间，其值为游戏已经流逝的时间
 
 ### "damage"类型
 
@@ -206,23 +216,21 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 以下为字段详解：
 
-* 0: 固定取值为"damage"，用以说明该条记录为一条伤害记录
-* 1: 时间戳，为当前记录发生的时间，其值为游戏已经流逝的时间
-* 2: 伤害来源单位的名称
-* 3: 伤害目标单位的名称
-* 4: 造成该次伤害的攻击方式名称，如，"普通攻击"，"风暴之锤"等等
-* 5: 伤害量
-* 6: 该伤害是否命中，取值"TRUE"或者"FALSE"
-* 7: 该伤害是否被格挡，取值"TRUE"或者"FALSE"
-* 8: 该伤害是否被躲闪，取值"TRUE"或者"FALSE"
-* 9: 该伤害是否暴击，取值"TRUE"或者"FALSE""
-* 10: 该伤害是否被免疫，取值"TRUE"或者"FALSE"
-* 11: 该伤害是否为物理伤害，取值"TRUE"或者"FALSE"
-* 12: 该伤害是否可被躲闪，取值"TRUE"或者"FALSE"
-* 13: 伤害来源单位的团队定位类型\*
-* 14: 伤害目标单位的团队定位类型\*
+1. 固定取值为"damage"，用以说明该条记录为一条伤害记录
+2. 时间戳，为当前记录发生的时间，其值为游戏已经流逝的时间
+3. 伤害来源单位的名称
+4. 伤害目标单位的名称
+5. 造成该次伤害的攻击方式名称，如，"普通攻击"，"风暴之锤"等等
+6. 伤害量
+7. 该伤害是否命中，取值"1"或者"0"
+8. 该伤害是否被格挡，取值"1"或者"0"
+9. 该伤害是否被躲闪，取值"1"或者"0"
+10. 该伤害是否暴击，取值"1"或者"0""
+11. 该伤害是否被免疫，取值"1"或者"0"
+12. 该伤害是否为物理伤害，取值"1"或者"0"
+13. 该伤害是否可被躲闪，取值"1"或者"0"
 
-其中6-12尚未在统计结果中解析，可根据实际情况随意填写，或者自行扩展网页端分析工具。
+其中7-13尚未在统计结果中解析，可根据实际情况随意填写，或者自行扩展网页端分析工具。
 
 ### "heal"类型
 
@@ -230,18 +238,16 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 以下为字段详解：
 
-* 0: 固定取值为"heal"，用以说明该条记录为一条治疗记录
-* 1: 时间戳，为当前记录发生的时间，其值为游戏已经流逝的时间
-* 2: 治疗来源单位的名称
-* 3: 治疗目标单位的名称
-* 4: 造成该次治疗的治疗方式名称，如，"治疗术"，"神圣之光"等等
-* 5: 有效治疗量
-* 6: 过量治疗量
-* 7: 该治疗是否为极效治疗，取值"TRUE"或者"FALSE"
-* 8: 治疗来源单位的团队定位类型\*
-* 9: 治疗目标单位的团队定位类型\*
+1. 固定取值为"heal"，用以说明该条记录为一条治疗记录
+2. 时间戳，为当前记录发生的时间，其值为游戏已经流逝的时间
+3. 治疗来源单位的名称
+4. 治疗目标单位的名称
+5. 造成该次治疗的治疗方式名称，如，"治疗术"，"神圣之光"等等
+6. 有效治疗量
+7. 过量治疗量
+8. 该治疗是否为极效治疗，取值"1"或者"0"
 
-其中7尚未在统计结果中解析，可根据实际情况随意填写，或者自行扩展网页端分析工具。
+其中8尚未在统计结果中解析，可根据实际情况随意填写，或者自行扩展网页端分析工具。
 
 ### "cast"类型
 
@@ -249,11 +255,11 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 以下为字段详解：
 
-* 0: 固定取值为"cast"，用以说明该条记录为一条施法记录
-* 1: 时间戳，为当前记录发生的时间，其值为游戏已经流逝的时间
-* 2: 施法单位的名称
-* 3: 目标单位的名称
-* 4: 使用的法术或者技能的名称
+1. 固定取值为"cast"，用以说明该条记录为一条施法记录
+2. 时间戳，为当前记录发生的时间，其值为游戏已经流逝的时间
+3. 施法单位的名称
+4. 目标单位的名称
+5. 使用的法术或者技能的名称
 
 ### "mana"类型
 
@@ -261,49 +267,35 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 以下为字段详解：
 
-* 0: 固定取值为"mana"，用以说明该条记录为一条魔法值记录
-* 1: 时间戳，为当前记录发生的时间，其值为游戏已经流逝的时间
-* 2: 记录单位的名称
-* 3: 记录单位的当前魔法值
-* 4: 记录单位的最大魔法值
-
-### 注: 单位团队定位类型
-
-用以在记录中自动区分并屏蔽部分单位的显示，比如在DPS曲线中，默认不会显示治疗职业的数据。如果不确定选择何种类型，一律选择"creep"即可。
-
-分如下类型: 
-
-* "tank": 坦克
-* "healer": 治疗者
-* "dps": 伤害输出者
-* "minion": 召唤物，仆从
-* "boss": Boss
-* "creep": 小怪
-* "error": 错误
+1. 固定取值为"mana"，用以说明该条记录为一条魔法值记录
+2. 时间戳，为当前记录发生的时间，其值为游戏已经流逝的时间
+3. 记录单位的名称
+4. 记录单位的当前魔法值
+5. 记录单位的最大魔法值
 
 以下为一个样本，有删减:
 ```
 cast,797.309,dummy,Naga Royal Guard,昏迷
-heal,798.300,Rayan Dawnrisen,Fandral Staghelm,治疗术,0.000,300.671,FALSE,healer,tank
+heal,798.300,Rayan Dawnrisen,Fandral Staghelm,治疗术,0.000,300.671,0,healer,tank
 combat,810.156
-heal,810.242,Sylvanas Windrunner,Sylvanas Windrunner,吸血攻击,0.000,18.810,FALSE,dps,dps
-damage,810.242,Sylvanas Windrunner,High Warlord Naj'entus,Normal Attack,188.100,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,dps,boss
+heal,810.242,Sylvanas Windrunner,Sylvanas Windrunner,吸血攻击,0.000,18.810,0,dps,dps
+damage,810.242,Sylvanas Windrunner,High Warlord Naj'entus,Normal Attack,188.100,1,0,0,0,0,1,1,dps,boss
 mana,810.300,Jaina Proudmoore,1760.000,1760.000
 mana,810.300,Sylvanas Windrunner,569.780,570.000
 cast,810.486,Varok Saurfang,,英勇打击
 cast,810.816,Sylvanas Windrunner,Sylvanas Windrunner,食尸鬼仆从
 cast,811.146,Sylvanas Windrunner,,冰冻陷阱
-damage,811.199,Varok Saurfang,High Warlord Naj'entus,撕裂,0.000,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,TRUE,dps,boss
+damage,811.199,Varok Saurfang,High Warlord Naj'entus,撕裂,0.000,1,1,0,0,0,1,1,dps,boss
 mana,811.300,Jaina Proudmoore,1760.000,1760.000
 cast,811.476,Varok Saurfang,High Warlord Naj'entus,撕裂
 cast,811.476,Sylvanas Windrunner,Sylvanas Windrunner,专注
-damage,811.529,Varok Saurfang,High Warlord Naj'entus,致死打击,536.550,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,dps,boss
-damage,811.629,Rayan Dawnrisen,High Warlord Naj'entus,Normal Attack,91.140,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,healer,boss
-damage,811.799,Fandral Staghelm,High Warlord Naj'entus,割伤,118.300,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,tank,boss
+damage,811.529,Varok Saurfang,High Warlord Naj'entus,致死打击,536.550,1,0,0,0,0,1,1,dps,boss
+damage,811.629,Rayan Dawnrisen,High Warlord Naj'entus,Normal Attack,91.140,1,0,0,0,0,1,1,healer,boss
+damage,811.799,Fandral Staghelm,High Warlord Naj'entus,割伤,118.300,1,0,0,0,0,0,0,tank,boss
 cast,811.806,Fandral Staghelm,High Warlord Naj'entus,割伤
 cast,811.806,Varok Saurfang,High Warlord Naj'entus,致死打击
-damage,811.908,Arthas Menethil,High Warlord Naj'entus,Normal Attack,85.260,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,healer,boss
-damage,812.036,Sylvanas Windrunner,High Warlord Naj'entus,黑箭,380.240,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,dps,boss
+damage,811.908,Arthas Menethil,High Warlord Naj'entus,Normal Attack,85.260,1,0,0,0,0,1,1,healer,boss
+damage,812.036,Sylvanas Windrunner,High Warlord Naj'entus,黑箭,380.240,1,0,0,0,0,1,0,dps,boss
 mana,812.300,Jaina Proudmoore,1760.000,1760.000
 mana,812.300,Fandral Staghelm,165.000,165.000
 ```
@@ -340,15 +332,13 @@ set entry = "damage," /* 记录类型
             */ + "食尸鬼" + "," /* 获得伤害目标单位的名称
             */ + "风暴之锤" + "," /* 伤害名称
             */ + "100.0" + "," /* 伤害值
-            */ + "TRUE" + "," /*
-            */ + "TRUE" + "," /*
-            */ + "TRUE" + "," /*
-            */ + "TRUE" + "," /*
-            */ + "TRUE" + "," /*
-            */ + "TRUE" + "," /*
-            */ + "TRUE" + "," /*
-            */ + "tank" + "," /* 将山丘之王分类为坦克职业
-            */ + "creep"; // 将食尸鬼分类为一种小怪
+            */ + "1" + "," /*
+            */ + "1" + "," /*
+            */ + "1" + "," /*
+            */ + "1" + "," /*
+            */ + "1" + "," /*
+            */ + "1" + "," /*
+            */ + "1";
             
 set WELA_Logs[WELA_Index] = entry
 set WELA_Index = WELA_Index + 1
