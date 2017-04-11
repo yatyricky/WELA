@@ -24,20 +24,35 @@ export default class DataStore {
     }
 
     parseDone() {
+        // sort all logs
+        const keys = Object.keys(this.originalData);
+        for (let i = 0, len = keys.length; i < len; i++) {
+            this.originalData[keys[i]].sort((a, b) => (a[0] === b[0] ? 0 : (a[0] < b[0] ? -1 : 1)));
+        }
+
         // update combat list
-        this.combatList = [1,2,3,4,5];
+        const {combat} = this.originalData;
+        this.combatList = [];
+        for (let i = 0, len = combat.length; i < len; i += 2) {
+            this.combatList.push({
+                "name": "",
+                "start": combat[i][0],
+                "end": (i + 1 < len) ? combat[i+1][0] : 9999
+            });
+        }
+
         this.updateCombatListCallback.call();
     }
 
     parseFile(e) {
         const lines = e.target.result.split("\n");
-        for(let i = 0; i < lines.length; i++) {
-            const tokens = lines[i].split(/[\",]/);
+        for(let i = 0, len = lines.length; i < len; i++) {
+            const tokens = lines[i].split(/[\"|]/);
             if (tokens.length > 3) {
                 tokens.shift();
                 tokens.pop();
-                if (this.originalData.hasOwnProperty(tokens[0])) {
-                    this.originalData[tokens[0]].push(tokens);
+                if (this.originalData.hasOwnProperty(tokens[1])) {
+                    this.originalData[tokens[1]].push(tokens);
                 }
             }
         }
@@ -62,7 +77,7 @@ export default class DataStore {
             "combat": []
         };
         this.callback.call();
-        for (var i = 0; i < files.length; i++) {
+        for (let i = 0, len = files.length; i < len; i++) {
             const reader = new FileReader();
             reader.readAsText(files[i]);
             reader.onload = this.parseFile;
@@ -70,7 +85,7 @@ export default class DataStore {
     }
 
     hasData() {
-        return (this.doneFiles == this.numFiles && this.numFiles > 0);
+        return (this.doneFiles === this.numFiles && this.numFiles > 0);
     }
 
 }

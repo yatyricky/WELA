@@ -71,7 +71,7 @@ class CombatSelector extends React.Component {
     renderCombatList(combatList) {
         const entries = combatList.map((item, index) => (
             <li key={index}>
-                <a href={window.location.href}>{item}</a>
+                <a href={window.location.href}>{`${item.start}-${item.end>=9999?"end":item.end}`}</a>
             </li>
         ));
         return entries;
