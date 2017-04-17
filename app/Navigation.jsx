@@ -58,7 +58,10 @@ class CombatSelector extends React.Component {
         this.updateCombatList = this.updateCombatList.bind(this);
         this.renderCombatList = this.renderCombatList.bind(this);
 
-        this.state = {combatList: []};
+        this.state = {
+            "combatList": [],
+            "activeLog": -1
+        };
 
         this.dataStore = new DataStore();
         this.dataStore.registerUpdateCombatList(this.updateCombatList);
@@ -68,10 +71,15 @@ class CombatSelector extends React.Component {
         this.setState({combatList: this.dataStore.combatList});
     }
 
+    selectCombat(id) {
+        this.dataStore.setActiveLog(id);
+        this.setState({activeLog: id});
+    }
+
     renderCombatList(combatList) {
         const entries = combatList.map((item, index) => (
             <li key={index}>
-                <a href={window.location.href}>{`${item.start}-${item.end>=9999?"end":item.end}`}</a>
+                <a href={window.location.href} className={this.state.activeLog === item.id ? "active" : ""} onClick={() => this.selectCombat(item.id)}>{`${item.start}-${item.end>=9999?"end":item.end}`}</a>
             </li>
         ));
         return entries;

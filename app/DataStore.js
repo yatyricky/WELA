@@ -16,11 +16,53 @@ export default class DataStore {
             "mana": [],
             "combat": []
         };
+        this.combatList = [];
+        this.activeLog = -1;
+        this.updateDamageCallback = null;
         return instance;
     }
 
     registerUpdateCombatList(updateCombatListCallback) {
         this.updateCombatListCallback = updateCombatListCallback;
+    }
+
+    registerUpdateDamage(updateDamageCallback) {
+        this.updateDamageCallback = updateDamageCallback;
+    }
+
+    setActiveLog(id) {
+        this.activeLog = id;
+
+        if (this.updateDamageCallback !== null) {
+            this.updateDamageCallback.call();
+        }
+    }
+
+    fetchLog(type) {
+        let findCombat = null;
+        for (var i = this.combatList.length - 1; i >= 0; i--) {
+            if (this.combatList[i].id === this.activeLog) {
+                findCombat = this.combatList[i];
+            }
+        }
+        if (findCombat !== null) {
+            let log = this.originalData[type];
+            let l = 0, r = log.length;
+            let m = 0;
+            while (l <= r) {
+                m = Math.floor((l + r) / 2.0);
+                if (parseFloat(log[m][0]) < parseFloat(findCombat.start)) {
+                    l = m + 1;
+                } else {
+                    r = m - 1;
+                }
+            }
+            // console.log(log);
+            console.log(m);
+            return [];
+        } else {
+            return [];
+        }
     }
 
     parseDone() {
@@ -33,8 +75,10 @@ export default class DataStore {
         // update combat list
         const {combat} = this.originalData;
         this.combatList = [];
+        this.activeLog = -1;
         for (let i = 0, len = combat.length; i < len; i += 2) {
             this.combatList.push({
+                "id": i,
                 "name": "",
                 "start": combat[i][0],
                 "end": (i + 1 < len) ? combat[i+1][0] : 9999
