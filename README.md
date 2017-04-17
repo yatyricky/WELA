@@ -47,7 +47,7 @@ WELA没有采用任何第三方修改WC3的手段（无JAPI），你可以使用
 
 笔者使用输入聊天信息的方式来触发，例如：
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/log.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/log.jpg)
 
 就可以生成一个或者数个日志文件，可用任何文本编辑工具如记事本打开。
 
@@ -65,11 +65,11 @@ WELA没有采用任何第三方修改WC3的手段（无JAPI），你可以使用
 
 从图中可以看到，系统自动输出过两次，分别被命名为 Auto-0 和 Auto-1。然后手动输出一次，被命名为 foobar-2。
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/drag.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/drag.jpg)
 
 点击左侧的导航按钮，即可快速查看战斗统计了，如图:
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/sample.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/sample.jpg)
 
 # WELA功能详细介绍
 
@@ -83,7 +83,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/combats.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/combats.jpg)
 
 * 每一次战斗将默认以时间戳区间为标签
 * 点击之后，将以进入战斗时遇到的第一个怪物名称为标签
@@ -99,7 +99,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/damages.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/damages.jpg)
 
 左侧的 Damages Done By All Players 为总伤害排名。
 
@@ -107,7 +107,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 点击总伤害的任意一条，即可看到分解伤害，如图：
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/damage_drill.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/damage_drill.jpg)
 
 ## 治疗
 
@@ -121,7 +121,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/healings.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/healings.jpg)
 
 左上方的 Healings Done By All Players 为总治疗排名。其中：
 
@@ -147,7 +147,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/casts.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/casts.jpg)
 
 左侧 Casts By All Players 显示每个玩家单位的总施法次数。
 
@@ -163,7 +163,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/damage_taken.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/damage_taken.jpg)
 
 左侧的 Damages Taken By All Players 为总受到伤害排名。
 
@@ -171,13 +171,13 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 点击总受到伤害的任意一条，即可看到分解伤害，如图：
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/damage_taken_drill.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/damage_taken_drill.jpg)
 
 ## 魔法值
 
 魔法值部分可以看到每个玩家单位在一次战斗中的法力值变化曲线，如图：
 
-![](https://github.com/yatyricky/we/raw/gh-pages/manual/mana.jpg)
+![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/mana.jpg)
 
 其中左侧的 Max Mana of All Players 显示为每个玩家单位的最大法力值，按降序排序。
 
