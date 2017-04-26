@@ -47,19 +47,40 @@ export default class DataStore {
         }
         if (findCombat !== null) {
             let log = this.originalData[type];
-            let l = 0, r = log.length;
+            // find start point
+            let l = 0, r = log.length - 1;
             let m = 0;
             while (l <= r) {
                 m = Math.floor((l + r) / 2.0);
                 if (parseFloat(log[m][0]) < parseFloat(findCombat.start)) {
                     l = m + 1;
-                } else {
+                } else if (parseFloat(log[m][0]) > parseFloat(findCombat.start)) {
                     r = m - 1;
+                } else {
+                    l = r + 1;
                 }
             }
-            // console.log(log);
-            console.log(m);
-            return [];
+            if (parseFloat(log[m][0]) < parseFloat(findCombat.start)) {
+                m += 1;
+            }
+            let s = m;
+            // find end point
+            l = s + 1;
+            r = log.length - 1;
+            if (l > r) {
+                m = r;
+            }
+            while (l <= r) {
+                m = Math.floor((l + r) / 2.0);
+                if (parseFloat(log[m][0]) < parseFloat(findCombat.end)) {
+                    l = m + 1;
+                } else if (parseFloat(log[m][0]) > parseFloat(findCombat.end)) {
+                    r = m - 1;
+                } else {
+                    l = r + 1;
+                }
+            }
+            return log.slice(s, m + 1);
         } else {
             return [];
         }
