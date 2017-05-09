@@ -112,9 +112,28 @@ class Damage extends React.Component {
                 let drillData = [];
                 for (let j = 0, m = techniques.length; j < m; j++) {
                     sum += methodDamages[names[i]][techniques[j]];
-                    drillData.push([techniques[j], methodDamages[names[i]][techniques[j]]]);
+                    let index = 0;
+                    while (index < drillData.length) {
+                        if (drillData[index][1] > methodDamages[names[i]][techniques[j]]) {
+                            index ++;
+                        } else {
+                            break;
+                        }
+                    }   
+                    drillData.splice(index ,0, [
+                        techniques[j], 
+                        methodDamages[names[i]][techniques[j]]
+                    ]);
                 }
-                bulkDamage.push({
+                let index = 0;
+                while (index < bulkDamage.length) {
+                    if (bulkDamage[index].y > sum) {
+                        index ++;
+                    } else {
+                        break;
+                    }
+                }
+                bulkDamage.splice(index, 0, {
                     "name": names[i],
                     "y": sum,
                     "drilldown": names[i]
@@ -153,7 +172,8 @@ class Damage extends React.Component {
 
             const highConfigDamage = {
                 "chart": {
-                    "type": "bar"
+                    "type": "bar",
+                    animation: false
                 },
                 "title": {
                     "text": "伤害构成"
@@ -177,7 +197,7 @@ class Damage extends React.Component {
                         "borderWidth": 0,
                         "dataLabels": {
                             "enabled": true,
-                            "format": "{point.y:.2f}%"
+                            "format": "{point.y:.2f}"
                         }
                     }
                 },
@@ -192,6 +212,7 @@ class Damage extends React.Component {
                     data: bulkDamage
                 }],
                 drilldown: {
+                    animation: false,
                     series: drillDamage
                 }
             };
