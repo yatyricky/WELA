@@ -109,7 +109,8 @@ class Heal extends React.Component {
                         <td>{raw[i][2]}</td>
                         <td>{raw[i][3]}</td>
                         <td>{raw[i][4]}</td>
-                        <td className="text-right">{(parseFloat(raw[i][5]) + parseFloat(raw[i][6])).toFixed(3)}</td>
+                        <td className="text-right">{parseFloat(raw[i][5]).toFixed(3)}</td>
+                        <td className="text-right">{parseFloat(raw[i][6]).toFixed(3)}</td>
                     </tr>
                 );
             }
@@ -143,11 +144,11 @@ class Heal extends React.Component {
 
                     categoryEffective.push({
                         "name": techniques[j],
-                        "y": sumDamage
+                        "y": methodDamages[names[i]][techniques[j]]
                     });
                     categoryOverflow.push({
                         "name": techniques[j],
-                        "y": sumOverflow
+                        "y": methodOverflows[names[i]][techniques[j]]
                     });
                 }
 
@@ -272,7 +273,8 @@ class Heal extends React.Component {
                                     <th>治疗来源</th>
                                     <th>治疗目标</th>
                                     <th>技能</th>
-                                    <th>治疗量</th>
+                                    <th>有效治疗</th>
+                                    <th>过量治疗</th>
                                 </tr>
                             </thead>
                             <tbody>
