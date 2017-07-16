@@ -158,7 +158,7 @@ class Damage extends React.Component {
                 "xAxis": {
                     "categories": timeChunks
                 },
-                tooltip: {
+                "tooltip": {
                     "valueSuffix": '',
                     "pointFormat": '{series.name}: <b>{point.y:.2f}</b>'
                 },
@@ -173,7 +173,7 @@ class Damage extends React.Component {
             const highConfigDamage = {
                 "chart": {
                     "type": "bar",
-                    animation: false
+                    "animation": false
                 },
                 "title": {
                     "text": "伤害构成"
@@ -203,17 +203,17 @@ class Damage extends React.Component {
                 },
                 "tooltip": {
                     "headerFormat": '<span style="font-size:11px">{series.name}</span><br>',
-                    "pointFormat": '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                    "pointFormat": '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b><br/>'
                 },
 
-                series: [{
-                    name: "damage construction",
-                    colorByPoint: true,
-                    data: bulkDamage
+                "series": [{
+                    "name": "伤害量",
+                    "colorByPoint": true,
+                    "data": bulkDamage
                 }],
-                drilldown: {
-                    animation: false,
-                    series: drillDamage
+                "drilldown": {
+                    "animation": false,
+                    "series": drillDamage
                 }
             };
             return (
@@ -224,11 +224,11 @@ class Damage extends React.Component {
                         <table className="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>time</th>
-                                    <th>source</th>
-                                    <th>target</th>
-                                    <th>method</th>
-                                    <th>amount</th>
+                                    <th>时间</th>
+                                    <th>伤害来源</th>
+                                    <th>伤害目标</th>
+                                    <th>技能</th>
+                                    <th>伤害量</th>
                                 </tr>
                             </thead>
                             <tbody>

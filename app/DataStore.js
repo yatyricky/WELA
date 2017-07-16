@@ -90,7 +90,7 @@ export default class DataStore {
         // sort all logs
         const keys = Object.keys(this.originalData);
         for (let i = 0, len = keys.length; i < len; i++) {
-            this.originalData[keys[i]].sort((a, b) => (a[0] === b[0] ? 0 : (a[0] < b[0] ? -1 : 1)));
+            this.originalData[keys[i]].sort((a, b) => (a[0] === b[0] ? 0 : (parseFloat(a[0].split("-")[0]) < parseFloat(b[0].split("-")[0]) ? -1 : 1)));
         }
 
         // update combat list
