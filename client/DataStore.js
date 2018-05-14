@@ -3,9 +3,6 @@ let instance = null;
 export default class DataStore {
 
     constructor() {
-        if (!instance) {
-            instance = this;
-        }
         this.parseFile = this.parseFile.bind(this);
         this.numFiles = 0;
         this.doneFiles = 0;
@@ -19,6 +16,17 @@ export default class DataStore {
         this.combatList = [];
         this.activeLog = -1;
         this.updateDamageCallback = null;
+        return instance;
+    }
+
+    static initialize(raw) {
+        return new DataStore();
+    }
+
+    static instance() {
+        if (!instance) {
+            instance = new DataStore();
+        }
         return instance;
     }
 

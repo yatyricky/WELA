@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 class DamageTaken extends React.Component {
 
     render() {
         return (
-            <h1 className="page-header">承受伤害统计</h1>
+            <h1 className="page-header">Damage Taken</h1>
         );
     }
 

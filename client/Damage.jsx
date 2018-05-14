@@ -1,9 +1,6 @@
-import React from 'react';
-import ReactHighcharts from 'react-highcharts';
-import HighchartsDrilldown from 'highcharts-drilldown';
-import DataStore from '../DataStore.js';
-
-HighchartsDrilldown(ReactHighcharts.Highcharts);
+import React from "react";
+import ReactHighcharts from "react-highcharts";
+import DataStore from "./DataStore.js";
 
 class Damage extends React.Component {
 
@@ -59,7 +56,7 @@ class Damage extends React.Component {
                     units[raw[i][2]] = {
                         "current": 0,
                         "chunks": []
-                    }
+                    };
                 }
                 // next chunk
                 if (niddle + 5 <= parseFloat(raw[i][0])) {
@@ -159,8 +156,8 @@ class Damage extends React.Component {
                     "categories": timeChunks
                 },
                 "tooltip": {
-                    "valueSuffix": '',
-                    "pointFormat": '{series.name}: <b>{point.y:.2f}</b>'
+                    "valueSuffix": "",
+                    "pointFormat": "{series.name}: <b>{point.y:.2f}</b>"
                 },
                 "legend": {
                     "layout": "vertical",
@@ -202,8 +199,8 @@ class Damage extends React.Component {
                     }
                 },
                 "tooltip": {
-                    "headerFormat": '<span style="font-size:11px">{series.name}</span><br>',
-                    "pointFormat": '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b><br/>'
+                    "headerFormat": "<span style='font-size:11px'>{series.name}</span><br>",
+                    "pointFormat": "<span style='color:{point.color}'>{point.name}</span>: <b>{point.y:.2f}</b><br/>"
                 },
 
                 "series": [{
@@ -246,7 +243,7 @@ class Damage extends React.Component {
     render() {
         return (
             <div>
-                <h1 className="page-header">伤害统计</h1>
+                <h1 className="page-header">Damage</h1>
                 {this.parseData()}
             </div>
         );

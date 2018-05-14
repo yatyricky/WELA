@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 class Mana extends React.Component {
 
     render() {
         return (
-            <h1 className="page-header">法力曲线</h1>
+            <h1 className="page-header">Mana</h1>
         );
     }
 

@@ -1,7 +1,6 @@
-import React from 'react';
-import ReactHighcharts from 'react-highcharts';
-import HighchartsDrilldown from 'highcharts-drilldown';
-import DataStore from '../DataStore.js';
+import React from "react";
+import ReactHighcharts from "react-highcharts";
+import DataStore from "./DataStore.js";
 
 class Heal extends React.Component {
 
@@ -71,7 +70,7 @@ class Heal extends React.Component {
                     units[raw[i][2]] = {
                         "current": 0,
                         "chunks": []
-                    }
+                    };
                 }
 
                 // next chunk
@@ -201,8 +200,8 @@ class Heal extends React.Component {
                     "categories": timeChunks
                 },
                 tooltip: {
-                    "valueSuffix": '',
-                    "pointFormat": '{series.name}: <b>{point.y:.2f}</b>'
+                    "valueSuffix": "",
+                    "pointFormat": "{series.name}: <b>{point.y:.2f}</b>"
                 },
                 "legend": {
                     "layout": "vertical",
@@ -241,9 +240,9 @@ class Heal extends React.Component {
                 "tooltip": {
                     "pointFormatter": function() {
                         if (this.levelNumber == 1) {
-                            return '<span style="color:'+this.series.color+'">\u25CF</span>' + this.series.name + ': <b>' + this.y.toFixed(2) + '</b><br/>';
+                            return "<span style='color:'"+this.series.color+">\u25CF</span>" + this.series.name + ": <b>" + this.y.toFixed(2) + "</b><br/>";
                         } else {
-                            return '<span style="color:'+this.color+'">\u25CF</span>: <b>' + this.y.toFixed(2) + ' (' + this.percentage.toFixed(2) + '%)</b><br/>';
+                            return "<span style='color:'"+this.color+">\u25CF</span>: <b>" + this.y.toFixed(2) + " (" + this.percentage.toFixed(2) + "%)</b><br/>";
                         }
                     }
                 },
@@ -292,7 +291,7 @@ class Heal extends React.Component {
     render() {
         return (
             <div>
-                <h1 className="page-header">治疗统计</h1>
+                <h1 className="page-header">Healing</h1>
                 {this.parseData()}
             </div>
         );

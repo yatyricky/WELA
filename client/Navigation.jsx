@@ -1,49 +1,45 @@
-import React from 'react';
-import { IndexLink, Link } from "react-router";
-import DataStore from './DataStore.js';
+import React from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import DataStore from "./DataStore.js";
 
 class NavigationCategory extends React.Component {
 
-    render() {
-        const categories = [
-            {
-                "text": "新建分析",
-                "to": "/"
-            }, {
-                "text": "伤害统计",
-                "to": "damage"
-            }, {
-                "text": "治疗统计",
-                "to": "heal"
-            }, {
-                "text": "施法统计",
-                "to": "cast"
-            }, {
-                "text": "承受伤害统计",
-                "to": "damageTaken"
-            }, {
-                "text": "法力曲线",
-                "to": "mana"}
-        ].map((item, index) => {
-            if (item.to == "/") {
-                return (
-                    <li key={index}>
-                        <IndexLink to={item.to} activeClassName="active">{item.text}</IndexLink>
-                    </li>
-                );
-            } else {
-                return (
-                    <li key={index}>
-                        <Link to={item.to} activeClassName="active">{item.text}</Link>
-                    </li>
-                );
-            }
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+        this.state = {
+            requesting: false
+        };
+    }
+
+    handleClick() {
+        this.setState({ requesting: "disabled" });
+        axios({
+            url: "/api/getdata",
+            method: "get",
+        }).then((response) => {
+            this.setState({ requesting: false });
+            console.log(response.data);
+            
+            // DataStore.initialize(response.data);
+        }).catch((error) => {
+            this.setState({ requesting: false });
+            console.log(error.response);
         });
+    }
+
+    render() {
         return (
             <div>
-                <h3>快速导航</h3>
-                <ul className="nav nav-sidebar">
-                    {categories}
+                <button type="button" disabled={this.state.requesting} onClick={this.handleClick}>Reload Data</button>
+                <h3>Categories</h3>
+                <ul>
+                    <li><Link to='/'>Damage</Link></li>
+                    <li><Link to='/heal'>Healing</Link></li>
+                    <li><Link to='/cast'>Cast</Link></li>
+                    <li><Link to='/damageTaken'>Damage Taken</Link></li>
+                    <li><Link to='/mana'>Mana</Link></li>
                 </ul>
             </div>
         );
@@ -102,9 +98,9 @@ class Navigation extends React.Component {
 
     render() {
         return (
-            <div className="col-sm-3 col-md-2 sidebar">
+            <div>
                 <NavigationCategory />
-                <CombatSelector />
+                {/* <CombatSelector /> */}
             </div>
         );
     }

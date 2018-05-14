@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 class Cast extends React.Component {
 
     render() {
         return (
-            <h1 className="page-header">施法统计</h1>
+            <h1 className="page-header">Cast</h1>
         );
     }
 
