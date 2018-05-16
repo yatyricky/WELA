@@ -1,220 +1,147 @@
 import React from "react";
 import ReactHighcharts from "react-highcharts";
-import dataStore from "./DataStore.js";
+import { registerDataUpdated, unregisterDataUpdated, getCurrentCombatData } from "./DataStore.js";
+import config from "./Configs.js";
 
 class Damage extends React.Component {
 
     constructor(props) {
         super(props);
+        this.reloadData = this.reloadData.bind(this);
+        this.state = {
+            data: getCurrentCombatData()
+        };
+        registerDataUpdated(this.reloadData);
+
     }
 
-    parseData() {
-        // if (this.state.raw.length > 0) {
-        //     // table raw data
-        //     let {raw} = this.state;
-        //     let entries = [];
+    componentWillUnmount() {
+        unregisterDataUpdated(this.reloadData);
+    }
 
-        //     let niddle = Math.floor(parseFloat(raw[0][0]));
-        //     let timeChunks = [];
-        //     let units = {};
-
-        //     let methodDamages = {};
-
-        //     for (let i = 0, n = raw.length; i < n; i++) {
-        //         // init unit data
-        //         if (units.hasOwnProperty(raw[i][2]) == false) {
-        //             units[raw[i][2]] = {
-        //                 "current": 0,
-        //                 "chunks": []
-        //             };
-        //         }
-        //         // next chunk
-        //         if (niddle + 5 <= parseFloat(raw[i][0])) {
-        //             timeChunks.push(niddle);
-        //             let names = Object.keys(units);
-        //             for (let j = 0, m = names.length; j < m; j++) {
-        //                 units[names[j]].chunks.push(units[names[j]].current / 5.0);
-        //                 units[names[j]].current = 0;
-        //             }
-        //             niddle += 5;
-        //         }
-        //         units[raw[i][2]].current += parseFloat(raw[i][5]);
-        //         // damage breakdown
-        //         if (methodDamages.hasOwnProperty(raw[i][2]) == false) {
-        //             methodDamages[raw[i][2]] = {};
-        //         }
-        //         if (methodDamages[raw[i][2]].hasOwnProperty(raw[i][4]) == false) {
-        //             methodDamages[raw[i][2]][raw[i][4]] = 0;
-        //         }
-        //         methodDamages[raw[i][2]][raw[i][4]] += parseFloat(raw[i][5]);
-
-        //         entries.push(
-        //             <tr key={i}>
-        //                 <td>{raw[i][0]}</td>
-        //                 <td>{raw[i][2]}</td>
-        //                 <td>{raw[i][3]}</td>
-        //                 <td>{raw[i][4]}</td>
-        //                 <td className="text-right">{raw[i][5]}</td>
-        //             </tr>
-        //         );
-        //     }
-
-        //     // build dps curve
-        //     let unitDpss = [];
-        //     let names = Object.keys(units);
-        //     for (let i = 0, n = names.length; i < n; i++) {
-        //         unitDpss.push({
-        //             "name": names[i],
-        //             "data": units[names[i]].chunks
-        //         });
-        //     }
-
-        //     // build damage breakdown
-        //     let bulkDamage = [];
-        //     let drillDamage = [];
-        //     names = Object.keys(methodDamages);
-        //     for (let i = 0, n = names.length; i < n; i++) {
-        //         let techniques = Object.keys(methodDamages[names[i]]);
-        //         let sum = 0;
-        //         let drillData = [];
-        //         for (let j = 0, m = techniques.length; j < m; j++) {
-        //             sum += methodDamages[names[i]][techniques[j]];
-        //             let index = 0;
-        //             while (index < drillData.length) {
-        //                 if (drillData[index][1] > methodDamages[names[i]][techniques[j]]) {
-        //                     index ++;
-        //                 } else {
-        //                     break;
-        //                 }
-        //             }   
-        //             drillData.splice(index ,0, [
-        //                 techniques[j], 
-        //                 methodDamages[names[i]][techniques[j]]
-        //             ]);
-        //         }
-        //         let index = 0;
-        //         while (index < bulkDamage.length) {
-        //             if (bulkDamage[index].y > sum) {
-        //                 index ++;
-        //             } else {
-        //                 break;
-        //             }
-        //         }
-        //         bulkDamage.splice(index, 0, {
-        //             "name": names[i],
-        //             "y": sum,
-        //             "drilldown": names[i]
-        //         });
-        //         drillDamage.push({
-        //             "name": names[i],
-        //             "id": names[i],
-        //             "data": drillData
-        //         });
-        //     }
-
-        //     // highcharts config
-        //     const highConfigDps = {
-        //         "title": {
-        //             "text": "DPS曲线"
-        //         },
-        //         "yAxis": {
-        //             "title": {
-        //                 "text": "DPS"
-        //             }
-        //         },
-        //         "xAxis": {
-        //             "categories": timeChunks
-        //         },
-        //         "tooltip": {
-        //             "valueSuffix": "",
-        //             "pointFormat": "{series.name}: <b>{point.y:.2f}</b>"
-        //         },
-        //         "legend": {
-        //             "layout": "vertical",
-        //             "align": "right",
-        //             "verticalAlign": "middle"
-        //         },
-        //         "series": unitDpss
-        //     };
-
-        //     const highConfigDamage = {
-        //         "chart": {
-        //             "type": "bar",
-        //             "animation": false
-        //         },
-        //         "title": {
-        //             "text": "伤害构成"
-        //         },
-        //         "subtitle": {
-        //             "text": "点击伤害条以查看"
-        //         },
-        //         "xAxis": {
-        //             "type": "category"
-        //         },
-        //         "yAxis": {
-        //             "title": {
-        //                 "text": "总伤害"
-        //             }
-        //         },
-        //         "legend": {
-        //             "enabled": false
-        //         },
-        //         "plotOptions": {
-        //             "series": {
-        //                 "borderWidth": 0,
-        //                 "dataLabels": {
-        //                     "enabled": true,
-        //                     "format": "{point.y:.2f}"
-        //                 }
-        //             }
-        //         },
-        //         "tooltip": {
-        //             "headerFormat": "<span style='font-size:11px'>{series.name}</span><br>",
-        //             "pointFormat": "<span style='color:{point.color}'>{point.name}</span>: <b>{point.y:.2f}</b><br/>"
-        //         },
-
-        //         "series": [{
-        //             "name": "伤害量",
-        //             "colorByPoint": true,
-        //             "data": bulkDamage
-        //         }],
-        //         "drilldown": {
-        //             "animation": false,
-        //             "series": drillDamage
-        //         }
-        //     };
-        //     return (
-        //         <div>
-        //             <ReactHighcharts config={highConfigDps} />
-        //             <ReactHighcharts config={highConfigDamage} />
-        //             <div className="table-responsive">
-        //                 <table className="table table-striped">
-        //                     <thead>
-        //                         <tr>
-        //                             <th>时间</th>
-        //                             <th>伤害来源</th>
-        //                             <th>伤害目标</th>
-        //                             <th>技能</th>
-        //                             <th>伤害量</th>
-        //                         </tr>
-        //                     </thead>
-        //                     <tbody>
-        //                         {entries}
-        //                     </tbody>
-        //                 </table>
-        //             </div>
-        //         </div>
-        //     );
-        // } else {
-        //     return <div />;
-        // }
+    reloadData(combatData) {
+        this.setState({
+            data: combatData
+        });
     }
 
     render() {
+        let contents = null;
+        if (this.state.data != null) {
+            const tableEntries = [];
+            let hconfigDPS = {
+                xAxis: [],
+                data: [],
+                current: -1,
+                units: {},
+                i: -1
+            };
+            let i = 0;
+            for (; i < this.state.data.damages.length; i++) {
+                const element = this.state.data.damages[i];
+                // table
+                tableEntries.push(
+                    <tr key={i}>
+                        <td>{element.time}</td>
+                        <td>{element.source}</td>
+                        <td>{element.target}</td>
+                        <td>{element.name}</td>
+                        <td>{element.amount}</td>
+                    </tr>
+                );
+                // hc DPS
+                if (hconfigDPS.current == -1) {
+                    hconfigDPS.current = Math.floor(element.time);
+                }
+                if (element.time >= hconfigDPS.current + config.xpsInterval) {
+                    // next chunk
+                    hconfigDPS.xAxis.push(hconfigDPS.current);
+                    hconfigDPS.current += config.xpsInterval;
+                    hconfigDPS.i += 1;
+                    for (let j = 0; j < hconfigDPS.data.length; j++) {
+                        const elem = hconfigDPS.data[j];
+                        let k = elem.data.length;
+                        while (k < hconfigDPS.i) {
+                            elem.data.push(0);
+                            k += 1;
+                        }
+                        elem.data.push(hconfigDPS.units[elem.name] / config.xpsInterval);
+                        hconfigDPS.units[elem.name] = 0;
+                    }
+                }
+                if (hconfigDPS.units.hasOwnProperty(element.source) == false) {
+                    hconfigDPS.units[element.source] = 0;
+                    hconfigDPS.data.push({
+                        name: element.source,
+                        data: [],
+                        visible: element.sourceT == "dps"
+                    });
+                }
+                hconfigDPS.units[element.source] += element.amount;
+            }
+            // last bit
+            hconfigDPS.xAxis.push(hconfigDPS.current);
+            hconfigDPS.i += 1;
+            for (let j = 0; j < hconfigDPS.data.length; j++) {
+                const elem = hconfigDPS.data[j];
+                let k = elem.data.length;
+                while (k < hconfigDPS.i) {
+                    elem.data.push(0);
+                    k += 1;
+                }
+                elem.data.push(hconfigDPS.units[elem.name] / config.xpsInterval);
+                hconfigDPS.units[elem.name] = 0;
+            }
+
+            const highConfigDps = {
+                chart: {
+                    type: "spline"
+                },
+                title: {
+                    text: "DPS Curve"
+                },
+                xAxis: {
+                    categories: hconfigDPS.xAxis
+                },
+                yAxis: {
+                    title: {
+                        text: "DPS"
+                    }
+                },
+                legend: {
+                    layout: "vertical",
+                    align: "right",
+                    verticalAlign: "middle"
+                },
+                series: hconfigDPS.data
+            };
+
+            contents = (
+                <div>
+                    <ReactHighcharts config={highConfigDps} />
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Source</th>
+                                <th>Target</th>
+                                <th>Name</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tableEntries}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        } else {
+            contents = <div>No data</div>;
+        }
         return (
             <div>
-                <h1 className="page-header">Damage</h1>
-                {this.parseData()}
+                <h3 className="page-header">Damage</h3>
+                {contents}
             </div>
         );
     }

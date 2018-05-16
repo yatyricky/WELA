@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import dataStore from "./DataStore.js";
+import {setAllData, setCombatData} from "./DataStore.js";
 
 class CombatSelector extends React.Component {
 
@@ -35,7 +35,7 @@ class Navigation extends React.Component {
     }
 
     setCombat(num) {
-        dataStore.combat = num;
+        setCombatData(num);
     }
 
     handleClick() {
@@ -45,8 +45,7 @@ class Navigation extends React.Component {
             method: "get",
         }).then((response) => {
             this.setState({ requesting: false });
-            console.log(response.data);
-            dataStore.data = response.data;
+            setAllData(response.data);
             const combatList = [];
             for (let i = 0; i < response.data.length; i++) {
                 const element = response.data[i];
