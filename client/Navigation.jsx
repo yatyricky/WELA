@@ -1,16 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import DataStore from "./DataStore.js";
+import dataStore from "./DataStore.js";
 
-class NavigationCategory extends React.Component {
+class CombatSelector extends React.Component {
 
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.props.action(this.props.num);
+    }
+
+    render() {
+        return (
+            <button type="button" onClick={this.handleClick}>{this.props.name}</button>
+        );
+    }
+}
+
+class Navigation extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+        this.setCombat = this.setCombat.bind(this);
+        
         this.state = {
-            requesting: false
+            requesting: false,
+            combatList: <div />
         };
+    }
+
+    setCombat(num) {
+        dataStore.combat = num;
     }
 
     handleClick() {
@@ -21,8 +46,25 @@ class NavigationCategory extends React.Component {
         }).then((response) => {
             this.setState({ requesting: false });
             console.log(response.data);
-            
-            // DataStore.initialize(response.data);
+            dataStore.data = response.data;
+            const combatList = [];
+            for (let i = 0; i < response.data.length; i++) {
+                const element = response.data[i];
+                combatList.push(
+                    <li key={i}>
+                        <CombatSelector action={this.setCombat} num={i} name={`${element.start} - ${element.end}`}/>
+                    </li>
+                );
+            }
+            if (combatList.length == 0) {
+                this.setState({
+                    combatList: <div />
+                });
+            } else {
+                this.setState({
+                    combatList: combatList
+                });
+            }
         }).catch((error) => {
             this.setState({ requesting: false });
             console.log(error.response);
@@ -41,66 +83,10 @@ class NavigationCategory extends React.Component {
                     <li><Link to='/damageTaken'>Damage Taken</Link></li>
                     <li><Link to='/mana'>Mana</Link></li>
                 </ul>
-            </div>
-        );
-    }
-
-}
-
-class CombatSelector extends React.Component {
-
-    constructor() {
-        super();
-        this.updateCombatList = this.updateCombatList.bind(this);
-        this.renderCombatList = this.renderCombatList.bind(this);
-
-        this.state = {
-            "combatList": [],
-            "activeLog": -1
-        };
-
-        this.dataStore = new DataStore();
-        this.dataStore.registerUpdateCombatList(this.updateCombatList);
-    }
-
-    updateCombatList() {
-        this.setState({combatList: this.dataStore.combatList});
-    }
-
-    selectCombat(id) {
-        this.dataStore.setActiveLog(id);
-        this.setState({activeLog: id});
-    }
-
-    renderCombatList(combatList) {
-        const entries = combatList.map((item, index) => (
-            <li key={index}>
-                <a href={window.location.href} className={this.state.activeLog === item.id ? "active" : ""} onClick={() => this.selectCombat(item.id)}>{`${item.start}-${item.end>=9999?"end":item.end}`}</a>
-            </li>
-        ));
-        return entries;
-    }
-
-    render() {
-        return (
-            <div>
-                <h3>战斗列表</h3>
-                <ul className="nav nav-sidebar">
-                    {this.renderCombatList(this.state.combatList)}
+                <h3>Combats</h3>
+                <ul>
+                    {this.state.combatList}
                 </ul>
-            </div>
-        );
-    }
-
-}
-
-class Navigation extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <NavigationCategory />
-                {/* <CombatSelector /> */}
             </div>
         );
     }

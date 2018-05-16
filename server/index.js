@@ -29,32 +29,78 @@ app.get("/api/getdata", (req, res) => {
         return a[0] - b[0];
     });
     const data = [];
-    let inCombat = false;
-    let combatObj = {};
+    let combatObj = {
+        start: 0,
+        end: 0,
+        damages: [], // source|career|target|career|abilName|amount
+        healings: [], // source|career|target|career|abilName|amount|overflow
+        manas: [], // source|mana|maxMana
+        casts: [], // source|career|target|career|abilName
+        count: 0
+    };
     for (let i = 0; i < raw.length; i++) {
-        if (inCombat === false && raw[i][1] == "combat") {
-            inCombat = true;
-            combatObj = {
-                start: raw[i][0],
-                end: 0,
-                damages: [],
-                healings: [],
-                manas: [],
-                casts: [],
-                dtakens: []
-            };
+        if (raw[i][1] == "combat") {
+            if (combatObj.count > 0) {
+                combatObj.end = raw[i][0];
+                data.push(combatObj);
+                combatObj = {
+                    start: 0,
+                    end: 0,
+                    damages: [],
+                    healings: [],
+                    manas: [],
+                    casts: [],
+                    count: 0
+                };
+            }
+        } else {
+            if (combatObj.count == 0) {
+                combatObj.start = raw[i][0];
+            }
+            combatObj.count += 1;
+            if (raw[i][1] == "damage") {
+                combatObj.damages.push({
+                    time: raw[i][0],
+                    source: raw[i][2],
+                    sourceT: raw[i][3],
+                    target: raw[i][4],
+                    targetT: raw[i][5],
+                    name: raw[i][6],
+                    amount: parseFloat(raw[i][7])
+                });
+            } else if (raw[i][1] == "heal") {
+                combatObj.healings.push({
+                    time: raw[i][0],
+                    source: raw[i][2],
+                    sourceT: raw[i][3],
+                    target: raw[i][4],
+                    targetT: raw[i][5],
+                    name: raw[i][6],
+                    amount: parseFloat(raw[i][7]),
+                    overflow: parseFloat(raw[i][8])
+                });
+            } else if (raw[i][1] == "cast") {
+                combatObj.casts.push({
+                    time: raw[i][0],
+                    source: raw[i][2],
+                    sourceT: raw[i][3],
+                    target: raw[i][4],
+                    targetT: raw[i][5],
+                    name: raw[i][6]
+                });
+            } else if (raw[i][1] == "mana") {
+                combatObj.manas.push({
+                    time: raw[i][0],
+                    source: raw[i][2],
+                    mana: parseFloat(raw[i][3]),
+                    maxMana: parseFloat(raw[i][4])
+                });
+            }
         }
-        if (inCombat === true && raw[i][1] == "combat") {
-            inCombat = false;
-            combatObj.end = raw[i][0];
-            data.push(combatObj);
-        }
-        if (raw[i][1] == "damage") {
-            combatObj.damages.push({
-                time: raw[i][0],
-                
-            });
-        }
+    }
+    if (combatObj.count > 0) {
+        combatObj.end = raw[raw.length - 1][0];
+        data.push(combatObj);
     }
     res.status(200).send(data);
 });
