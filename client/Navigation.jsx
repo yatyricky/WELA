@@ -51,7 +51,7 @@ class Navigation extends React.Component {
                 const element = response.data[i];
                 combatList.push(
                     <li key={i}>
-                        <CombatSelector action={this.setCombat} num={i} name={`${element.start} - ${element.end}`}/>
+                        <CombatSelector action={this.setCombat} num={i} name={`${element.start.toFixed(1)} - ${element.end.toFixed(1)} (${(element.end - element.start).toFixed(1)})`}/>
                     </li>
                 );
             }

@@ -18,6 +18,7 @@ const unregisterDataUpdated = (callback) => {
 const setCombatData = (num) => {
     _num = 0;
     if (_data.length > num) {
+        _num = num;
         callbackList.forEach(element => {
             element(_data[num]);
         });

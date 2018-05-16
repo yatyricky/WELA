@@ -5,7 +5,9 @@ import HighchartsReact from "highcharts-react-official";
 import { registerDataUpdated, unregisterDataUpdated, getCurrentCombatData } from "./DataStore.js";
 import config from "./Configs.js";
 
-Drilldown(Highcharts);
+if (!Highcharts.Chart.prototype.addSeriesAsDrilldown) {
+    Drilldown(Highcharts);
+}
 
 class Damage extends React.Component {
 
@@ -16,7 +18,6 @@ class Damage extends React.Component {
             data: getCurrentCombatData()
         };
         registerDataUpdated(this.reloadData);
-
     }
 
     componentWillUnmount() {
@@ -25,8 +26,14 @@ class Damage extends React.Component {
 
     reloadData(combatData) {
         this.setState({
-            data: combatData
+            data: null
         });
+        setTimeout(() => {
+            this.setState({
+                data: combatData
+            });
+        }, 0.1);
+        
     }
 
     render() {
@@ -92,6 +99,7 @@ class Damage extends React.Component {
                 if (hconfigDamage.units.hasOwnProperty(element.source) == false) {
                     hconfigDamage.units[element.source] = {
                         sum: 0.0,
+                        career: element.sourceT,
                         abils: {}
                     };
                 }
@@ -119,28 +127,31 @@ class Damage extends React.Component {
             const keys = Object.keys(hconfigDamage.units);
             for (i = 0; i < keys.length; i++) {
                 const element = hconfigDamage.units[keys[i]];
-                hconfigDamage.series.push({
-                    name: keys[i],
-                    drilldown: keys[i],
-                    y: (element.sum / hconfigDamage.total) * 100.0
-                });
-                const drillDownObj = {
-                    name: keys[i],
-                    id: keys[i],
-                    data: []
-                };
-                const abilKeys = Object.keys(element.abils);
-                for (let j = 0; j < abilKeys.length; j++) {
-                    const elem = element.abils[abilKeys[j]];
-                    drillDownObj.data.push([
-                        abilKeys[j],
-                        (elem / element.sum) * 100.0
-                    ]);
+                if (element.career == "dps" || element.career == "tank" || element.career == "minion") {
+                    hconfigDamage.series.push({
+                        name: keys[i],
+                        drilldown: keys[i],
+                        y: (element.sum / hconfigDamage.total) * 100.0
+                    });
+                    const drillDownObj = {
+                        name: keys[i],
+                        type: "pie",
+                        id: keys[i],
+                        data: []
+                    };
+                    const abilKeys = Object.keys(element.abils);
+                    for (let j = 0; j < abilKeys.length; j++) {
+                        const elem = element.abils[abilKeys[j]];
+                        drillDownObj.data.push([
+                            abilKeys[j],
+                            (elem / element.sum) * 100.0
+                        ]);
+                    }
+                    drillDownObj.data.sort((a, b) => {
+                        return b[1] - a[1];
+                    });
+                    hconfigDamage.drilldown.push(drillDownObj);
                 }
-                drillDownObj.data.sort((a, b) => {
-                    return b[1] - a[1];
-                });
-                hconfigDamage.drilldown.push(drillDownObj);
             }
             hconfigDamage.series.sort((a, b) => {
                 return b.y - a.y;
@@ -200,7 +211,7 @@ class Damage extends React.Component {
                     pointFormat: "<span style='color:{point.color}'>{point.name}</span>: <b>{point.y:.2f}%</b><br/>"
                 },
                 series: [{
-                    name: "Browsers",
+                    name: "DPS",
                     colorByPoint: true,
                     data: hconfigDamage.series
                 }],
