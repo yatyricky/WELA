@@ -1,7 +1,11 @@
 import React from "react";
-import ReactHighcharts from "react-highcharts";
+import Highcharts from "highcharts";
+import Drilldown from "highcharts/modules/drilldown";
+import HighchartsReact from "highcharts-react-official";
 import { registerDataUpdated, unregisterDataUpdated, getCurrentCombatData } from "./DataStore.js";
 import config from "./Configs.js";
+
+Drilldown(Highcharts);
 
 class Damage extends React.Component {
 
@@ -35,6 +39,12 @@ class Damage extends React.Component {
                 current: -1,
                 units: {},
                 i: -1
+            };
+            let hconfigDamage = {
+                series: [],
+                drilldown: [],
+                units: {},
+                total: 0.0
             };
             let i = 0;
             for (; i < this.state.data.damages.length; i++) {
@@ -78,6 +88,19 @@ class Damage extends React.Component {
                     });
                 }
                 hconfigDPS.units[element.source] += element.amount;
+                // hc damage
+                if (hconfigDamage.units.hasOwnProperty(element.source) == false) {
+                    hconfigDamage.units[element.source] = {
+                        sum: 0.0,
+                        abils: {}
+                    };
+                }
+                if (hconfigDamage.units[element.source].abils.hasOwnProperty(element.name) == false) {
+                    hconfigDamage.units[element.source].abils[element.name] = 0.0;
+                }
+                hconfigDamage.units[element.source].abils[element.name] += element.amount;
+                hconfigDamage.units[element.source].sum += element.amount;
+                hconfigDamage.total += element.amount;
             }
             // last bit
             hconfigDPS.xAxis.push(hconfigDPS.current);
@@ -92,6 +115,36 @@ class Damage extends React.Component {
                 elem.data.push(hconfigDPS.units[elem.name] / config.xpsInterval);
                 hconfigDPS.units[elem.name] = 0;
             }
+            // damage breakdown
+            const keys = Object.keys(hconfigDamage.units);
+            for (i = 0; i < keys.length; i++) {
+                const element = hconfigDamage.units[keys[i]];
+                hconfigDamage.series.push({
+                    name: keys[i],
+                    drilldown: keys[i],
+                    y: (element.sum / hconfigDamage.total) * 100.0
+                });
+                const drillDownObj = {
+                    name: keys[i],
+                    id: keys[i],
+                    data: []
+                };
+                const abilKeys = Object.keys(element.abils);
+                for (let j = 0; j < abilKeys.length; j++) {
+                    const elem = element.abils[abilKeys[j]];
+                    drillDownObj.data.push([
+                        abilKeys[j],
+                        (elem / element.sum) * 100.0
+                    ]);
+                }
+                drillDownObj.data.sort((a, b) => {
+                    return b[1] - a[1];
+                });
+                hconfigDamage.drilldown.push(drillDownObj);
+            }
+            hconfigDamage.series.sort((a, b) => {
+                return b.y - a.y;
+            });
 
             const highConfigDps = {
                 chart: {
@@ -115,10 +168,50 @@ class Damage extends React.Component {
                 },
                 series: hconfigDPS.data
             };
-
+            const highConfigDamage = {
+                chart: {
+                    type: "bar"
+                },
+                title: {
+                    text: "Damage Breakdown"
+                },
+                xAxis: {
+                    type: "category"
+                },
+                yAxis: {
+                    title: {
+                        text: "Damage Percent"
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: "{point.y:.1f}%"
+                        }
+                    }
+                },
+                tooltip: {
+                    headerFormat: "<span style='font-size:11px'>{series.name}</span><br>",
+                    pointFormat: "<span style='color:{point.color}'>{point.name}</span>: <b>{point.y:.2f}%</b><br/>"
+                },
+                series: [{
+                    name: "Browsers",
+                    colorByPoint: true,
+                    data: hconfigDamage.series
+                }],
+                drilldown: {
+                    series: hconfigDamage.drilldown
+                }
+            };
             contents = (
                 <div>
-                    <ReactHighcharts config={highConfigDps} />
+                    <HighchartsReact highcharts={Highcharts} options={highConfigDps} />
+                    <HighchartsReact highcharts={Highcharts} options={highConfigDamage} />
                     <table>
                         <thead>
                             <tr>
