@@ -43,9 +43,7 @@ class Heal extends React.Component {
             let hconfigHPS = {
                 xAxis: [],
                 data: [],
-                current: -1,
-                units: {},
-                i: -1
+                units: {}
             };
             let hconfigHealing = {
                 seriesOverflow: [],
@@ -60,6 +58,7 @@ class Heal extends React.Component {
             for (let i = 0; i < n + 1; i++) {
                 hconfigHPS.xAxis.push(first + i * config.xpsInterval);
             }
+            // start the loop
             n = 0;
             for (let i = 0; i < this.state.data.healings.length; i++) {
                 const element = this.state.data.healings[i];
@@ -113,7 +112,7 @@ class Heal extends React.Component {
             for (let i = 0; i < keys.length; i++) {
                 const element = hconfigHPS.units[keys[i]];
                 const seriesData = [];
-                for (let j = 0; j < element.data.length; j++) {
+                for (let j = 0; j < element.data.length - 1; j++) {
                     seriesData.push(element.data[j] / config.xpsInterval);
                 }
                 hconfigHPS.data.push({

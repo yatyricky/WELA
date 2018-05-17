@@ -43,9 +43,7 @@ class Damage extends React.Component {
             let hconfigDPS = {
                 xAxis: [],
                 data: [],
-                current: -1,
                 units: {},
-                i: -1
             };
             let hconfigDamage = {
                 series: [],
@@ -53,8 +51,15 @@ class Damage extends React.Component {
                 units: {},
                 total: 0.0
             };
-            let i = 0;
-            for (; i < this.state.data.damages.length; i++) {
+            // calculate chunks
+            let first = Math.floor(this.state.data.start);
+            let n = Math.ceil((this.state.data.end - first) / config.xpsInterval);
+            for (let i = 0; i < n + 1; i++) {
+                hconfigDPS.xAxis.push(first + i * config.xpsInterval);
+            }
+            // start the loop
+            n = 0;
+            for (let i = 0; i < this.state.data.damages.length; i++) {
                 const element = this.state.data.damages[i];
                 // table
                 tableEntries.push(
@@ -67,34 +72,19 @@ class Damage extends React.Component {
                     </tr>
                 );
                 // hc DPS
-                if (hconfigDPS.current == -1) {
-                    hconfigDPS.current = Math.floor(element.time);
-                }
-                if (element.time >= hconfigDPS.current + config.xpsInterval) {
-                    // next chunk
-                    hconfigDPS.xAxis.push(hconfigDPS.current);
-                    hconfigDPS.current += config.xpsInterval;
-                    hconfigDPS.i += 1;
-                    for (let j = 0; j < hconfigDPS.data.length; j++) {
-                        const elem = hconfigDPS.data[j];
-                        let k = elem.data.length;
-                        while (k < hconfigDPS.i) {
-                            elem.data.push(0);
-                            k += 1;
-                        }
-                        elem.data.push(hconfigDPS.units[elem.name] / config.xpsInterval);
-                        hconfigDPS.units[elem.name] = 0;
+                if (hconfigDPS.units.hasOwnProperty(element.source) == false) {
+                    hconfigDPS.units[element.source] = {
+                        career: element.sourceT,
+                        data: []
+                    };
+                    for (let j = 0; j < hconfigDPS.xAxis.length; j++) {
+                        hconfigDPS.units[element.source].data.push(0);
                     }
                 }
-                if (hconfigDPS.units.hasOwnProperty(element.source) == false) {
-                    hconfigDPS.units[element.source] = 0;
-                    hconfigDPS.data.push({
-                        name: element.source,
-                        data: [],
-                        visible: element.sourceT == "dps"
-                    });
+                if (element.time > hconfigDPS.xAxis[n + 1]) {
+                    n += 1;
                 }
-                hconfigDPS.units[element.source] += element.amount;
+                hconfigDPS.units[element.source].data[n] += element.amount;
                 // hc damage
                 if (hconfigDamage.units.hasOwnProperty(element.source) == false) {
                     hconfigDamage.units[element.source] = {
@@ -110,22 +100,23 @@ class Damage extends React.Component {
                 hconfigDamage.units[element.source].sum += element.amount;
                 hconfigDamage.total += element.amount;
             }
-            // last bit
-            hconfigDPS.xAxis.push(hconfigDPS.current);
-            hconfigDPS.i += 1;
-            for (let j = 0; j < hconfigDPS.data.length; j++) {
-                const elem = hconfigDPS.data[j];
-                let k = elem.data.length;
-                while (k < hconfigDPS.i) {
-                    elem.data.push(0);
-                    k += 1;
+            // hc DPS
+            let keys = Object.keys(hconfigDPS.units);
+            for (let i = 0; i < keys.length; i++) {
+                const element = hconfigDPS.units[keys[i]];
+                const seriesData = [];
+                for (let j = 0; j < element.data.length - 1; j++) {
+                    seriesData.push(element.data[j] / config.xpsInterval);
                 }
-                elem.data.push(hconfigDPS.units[elem.name] / config.xpsInterval);
-                hconfigDPS.units[elem.name] = 0;
+                hconfigDPS.data.push({
+                    name: keys[i],
+                    data: seriesData,
+                    visible: element.career == "dps" || element.career == "tank" || element.career == "minion"
+                });
             }
             // damage breakdown
-            const keys = Object.keys(hconfigDamage.units);
-            for (i = 0; i < keys.length; i++) {
+            keys = Object.keys(hconfigDamage.units);
+            for (let i = 0; i < keys.length; i++) {
                 const element = hconfigDamage.units[keys[i]];
                 if (element.career == "dps" || element.career == "tank" || element.career == "minion") {
                     hconfigDamage.series.push({
@@ -199,11 +190,7 @@ class Damage extends React.Component {
                 },
                 plotOptions: {
                     series: {
-                        borderWidth: 0,
-                        dataLabels: {
-                            enabled: true,
-                            format: "{point.y:.1f}%"
-                        }
+                        borderWidth: 0
                     }
                 },
                 tooltip: {
