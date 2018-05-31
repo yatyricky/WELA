@@ -53,23 +53,37 @@ WELA没有采用任何第三方修改WC3的手段（无JAPI），你可以使用
 
 ## 查看报告
 
-使用任何一款现代浏览器打开WELA的网页端工具。推荐Google Chrome，Firefox，强烈不推荐IE10及以下的版本。
+### 构建
 
-链接：[https://yatyricky.github.io/we/weloganalyser.html](https://yatyricky.github.io/we/weloganalyser.html)
+创建配置文件```./server/config.js```，样例：
+
+``` es6
+module.exports = {
+    dataDir: "D:\\Documents\\Warcraft III\\CustomMapData",
+    port: 3000
+};
+```
+
+其中：
+
+- ```dataDir```是War3 pld文件输出路径
+- ```port```是日志服务器运行端口
+
+然后：
+
+```
+npm install
+npm run build
+node ./server/index.js
+```
+
+在浏览器中打开[http://localhost:3000](http://localhost:3000)
 
 如下图：
 
-![](https://raw.githubusercontent.com/yatyricky/we/gh-pages/manual/main_ui.jpg)
+![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/main_ui.jpg)
 
-将该次游戏的所有日志文件，包括自动输出的，一起选择，拖入到网页中，查看日志分析结果。
-
-从图中可以看到，系统自动输出过两次，分别被命名为 Auto-0 和 Auto-1。然后手动输出一次，被命名为 foobar-2。
-
-![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/drag.jpg)
-
-点击左侧的导航按钮，即可快速查看战斗统计了，如图:
-
-![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/sample.jpg)
+![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/sample.jpg)
 
 # WELA功能详细介绍
 
@@ -83,7 +97,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/combats.jpg)
+![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/combats.jpg)
 
 * 每一次战斗将默认以时间戳区间为标签
 * 点击之后，将以进入战斗时遇到的第一个怪物名称为标签
@@ -99,7 +113,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/damages.jpg)
+![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/damages.jpg)
 
 左侧的 Damages Done By All Players 为总伤害排名。
 
@@ -107,7 +121,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 点击总伤害的任意一条，即可看到分解伤害，如图：
 
-![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/damage_drill.jpg)
+![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/damage_drill.jpg)
 
 ## 治疗
 
@@ -121,7 +135,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/healings.jpg)
+![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/healings.jpg)
 
 左上方的 Healings Done By All Players 为总治疗排名。其中：
 
@@ -147,7 +161,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/casts.jpg)
+![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/casts.jpg)
 
 左侧 Casts By All Players 显示每个玩家单位的总施法次数。
 
@@ -163,7 +177,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/damage_taken.jpg)
+![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/damage_taken.jpg)
 
 左侧的 Damages Taken By All Players 为总受到伤害排名。
 
@@ -171,13 +185,13 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 点击总受到伤害的任意一条，即可看到分解伤害，如图：
 
-![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/damage_taken_drill.jpg)
+![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/damage_taken_drill.jpg)
 
 ## 魔法值
 
 魔法值部分可以看到每个玩家单位在一次战斗中的法力值变化曲线，如图：
 
-![](https://raw.githubusercontent.com/yatyricky/WELA/master/imgs/mana.jpg)
+![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/mana.jpg)
 
 其中左侧的 Max Mana of All Players 显示为每个玩家单位的最大法力值，按降序排序。
 
@@ -394,4 +408,4 @@ Highcharts 中文站链接: [http://www.hcharts.cn/](http://www.hcharts.cn/)
 
 WELA来源于笔者的一个个人项目，因此其数据标准并不适合所有的地图项目，还有极大的提升空间，欢迎提出各种需求。
 
-Fork me on GitHub: [https://github.com/yatyricky/we](https://github.com/yatyricky/we)
+Fork me on GitHub: [https://github.com/yatyricky/WELA](https://github.com/yatyricky/WELA)

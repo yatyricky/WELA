@@ -2,27 +2,30 @@ const fs = require("fs");
 const path = require("path");
 const express = require("express");
 const app = express();
+const config = require("./config.js");
 
-app.listen(3000, () => {
-    console.log("--- server running on 3000 ---");
+app.listen(config.port, () => {
+    console.log(`--- server running on ${config.port} ---`);
 });
 
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-const dataDir = path.join(__dirname, "..", "data");
+const dataDir = path.join(config.dataDir);
 
 app.get("/api/getdata", (req, res) => {
     const files = fs.readdirSync(dataDir);
     const raw = [];
     for (let i = 0; i < files.length; i++) {
-        const whole = fs.readFileSync(path.join(dataDir, files[i]), "utf-8");
-        const regex = /"(.+)"/g;
-        let match = regex.exec(whole);
-        while (match != null) {
-            const tokens = match[1].split("|");
-            tokens[0] = parseFloat(tokens[0]);
-            raw.push(tokens);
-            match = regex.exec(whole);
+        if (files[i].match(/combatLog\-\d+\.pld/g)) {
+            const whole = fs.readFileSync(path.join(dataDir, files[i]), "utf-8");
+            const regex = /"(.+)"/g;
+            let match = regex.exec(whole);
+            while (match != null) {
+                const tokens = match[1].split("|");
+                tokens[0] = parseFloat(tokens[0]);
+                raw.push(tokens);
+                match = regex.exec(whole);
+            }
         }
     }
     raw.sort((a, b) => {
