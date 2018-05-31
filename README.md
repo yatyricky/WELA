@@ -81,9 +81,9 @@ node ./server/index.js
 
 如下图：
 
-![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/main_ui.jpg)
+![](https://github.com/yatyricky/WELA/blob/master/public/main_ui.jpg)
 
-![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/sample.jpg)
+![](https://github.com/yatyricky/WELA/blob/master/public/sample.jpg)
 
 # WELA功能详细介绍
 
@@ -97,7 +97,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/combats.jpg)
+![](https://github.com/yatyricky/WELA/blob/master/public/combats.jpg)
 
 * 每一次战斗将默认以时间戳区间为标签
 * 点击之后，将以进入战斗时遇到的第一个怪物名称为标签
@@ -113,7 +113,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/damages.jpg)
+![](https://github.com/yatyricky/WELA/blob/master/public/damages.jpg)
 
 左侧的 Damages Done By All Players 为总伤害排名。
 
@@ -121,7 +121,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 点击总伤害的任意一条，即可看到分解伤害，如图：
 
-![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/damage_drill.jpg)
+![](https://github.com/yatyricky/WELA/blob/master/public/damage_drill.jpg)
 
 ## 治疗
 
@@ -135,7 +135,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/healings.jpg)
+![](https://github.com/yatyricky/WELA/blob/master/public/healings.jpg)
 
 左上方的 Healings Done By All Players 为总治疗排名。其中：
 
@@ -161,7 +161,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/casts.jpg)
+![](https://github.com/yatyricky/WELA/blob/master/public/casts.jpg)
 
 左侧 Casts By All Players 显示每个玩家单位的总施法次数。
 
@@ -177,7 +177,7 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 如图：
 
-![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/damage_taken.jpg)
+![](https://github.com/yatyricky/WELA/blob/master/public/damage_taken.jpg)
 
 左侧的 Damages Taken By All Players 为总受到伤害排名。
 
@@ -185,13 +185,13 @@ WELA提供了一个函数，可以让用户设置有效战斗时间。本例中�
 
 点击总受到伤害的任意一条，即可看到分解伤害，如图：
 
-![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/damage_taken_drill.jpg)
+![](https://github.com/yatyricky/WELA/blob/master/public/damage_taken_drill.jpg)
 
 ## 魔法值
 
 魔法值部分可以看到每个玩家单位在一次战斗中的法力值变化曲线，如图：
 
-![](https://github.com/yatyricky/Zulaman-WE/blob/master/public/mana.jpg)
+![](https://github.com/yatyricky/WELA/blob/master/public/mana.jpg)
 
 其中左侧的 Max Mana of All Players 显示为每个玩家单位的最大法力值，按降序排序。
 
