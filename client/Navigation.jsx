@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // eslint-disable-line no-unused-vars
 import axios from "axios";
 import {setAllData, setCombatData} from "./DataStore.js";
 
-class CombatSelector extends React.Component {
+class CombatSelector extends React.Component { // eslint-disable-line no-unused-vars
 
     constructor(props) {
         super(props);

@@ -1,7 +1,7 @@
 import React from "react";
 import Highcharts from "highcharts";
 import Drilldown from "highcharts/modules/drilldown";
-import HighchartsReact from "highcharts-react-official";
+import HighchartsReact from "highcharts-react-official"; // eslint-disable-line no-unused-vars
 import { registerDataUpdated, unregisterDataUpdated, getCurrentCombatData } from "./DataStore.js";
 import config from "./Configs.js";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom"; // eslint-disable-line no-unused-vars
 import Damage from "./Damage.jsx";
 import Heal from "./Heal.jsx";
 import Cast from "./Cast.jsx";

@@ -1,6 +1,6 @@
 import React from "react";
-import Navigation from "./Navigation.jsx";
-import Contents from "./Contents.jsx";
+import Navigation from "./Navigation.jsx"; // eslint-disable-line no-unused-vars
+import Contents from "./Contents.jsx"; // eslint-disable-line no-unused-vars
 
 class Layout extends React.Component {
     render() {
