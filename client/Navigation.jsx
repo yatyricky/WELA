@@ -81,6 +81,7 @@ class Navigation extends React.Component {
                     <li><Link to='/cast'>Cast</Link></li>
                     <li><Link to='/damageTaken'>Damage Taken</Link></li>
                     <li><Link to='/mana'>Mana</Link></li>
+                    <li><Link to='/log'>Log</Link></li>
                 </ul>
                 <h3>Combats</h3>
                 <ul>

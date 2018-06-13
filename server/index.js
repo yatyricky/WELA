@@ -108,6 +108,18 @@ app.get("/api/getdata", (req, res) => {
     res.status(200).send(data);
 });
 
+app.get("/api/getlog", (req, res) => {
+    const whole = fs.readFileSync(path.join(dataDir, "debugLog.pld"), "utf-8");
+    const regex = /"(.+)"/g;
+    const arr = [];
+    let match = regex.exec(whole);
+    while (match != null) {
+        arr.push(match[1]);
+        match = regex.exec(whole);
+    }
+    res.status(200).send(arr);
+});
+
 app.get("*", (req, res) => {
     res.status(200).sendFile(path.join(__dirname, "..", "client", "index.html"));
 });

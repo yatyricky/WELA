@@ -5,6 +5,7 @@ import Heal from "./Heal.jsx";
 import Cast from "./Cast.jsx";
 import DamageTaken from "./DamageTaken.jsx";
 import Mana from "./Mana.jsx";
+import Log from "./Log.jsx";
 
 class Contents extends React.Component {
 
@@ -16,6 +17,7 @@ class Contents extends React.Component {
                 <Route path='/cast' component={Cast} />
                 <Route path='/damageTaken' component={DamageTaken} />
                 <Route path='/mana' component={Mana} />
+                <Route path='/log' component={Log} />
             </Switch>
         );
     }
