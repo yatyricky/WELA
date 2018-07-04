@@ -31,11 +31,33 @@ class Log extends React.Component {
 
     render() {
         const listItems = [];
+        let linesCounter = 0;
         for (let i = 0; i < this.state.listData.length; i++) {
             const element = this.state.listData[i];
-            listItems.push(
-                <li key={i}>{element}</li>
-            );
+            const lines = element.split(/\|[nN]/g);
+            for (let l = 0; l < lines.length; l++) {
+                const line = lines[l];
+                const regexSplit = /\|[cC][a-fA-F0-9]{8}[^\|]*\|[rR]/g;
+                const regexExtract = /\|[cC]([a-fA-F0-9]{8})([^\|]*)\|[rR]/g;
+                const tokens = line.split(regexSplit);
+                const parts = [];
+                let counter = 0;
+                for (let j = 0; j < tokens.length; j ++) {
+                    parts.push(<span key={counter++}>{tokens[j]}</span>);
+                    if (j < tokens.length - 1) {
+                        let match = regexExtract.exec(line);
+                        const style = {color: "#" + match[1].substr(2, 8)};
+                        if (match) {
+                            parts.push(<span key={counter++} style={style}>{match[2]}</span>);
+                        } else {
+                            throw new Error("regex boomed");
+                        }
+                    }
+                }
+                listItems.push(
+                    <li key={linesCounter++}>{parts}</li>
+                );
+            }
         }
         return (
             <div>
