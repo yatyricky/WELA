@@ -1,6 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom"; // eslint-disable-line no-unused-vars
 import axios from "axios";
+import Divider from "@material-ui/core/Divider"; // eslint-disable-line no-unused-vars
+import Button from "@material-ui/core/Button"; // eslint-disable-line no-unused-vars
+import List from "@material-ui/core/List"; // eslint-disable-line no-unused-vars
+import ListItem from "@material-ui/core/ListItem"; // eslint-disable-line no-unused-vars
 import {setAllData, setCombatData} from "./DataStore.js";
 
 class CombatSelector extends React.Component { // eslint-disable-line no-unused-vars
@@ -16,7 +19,7 @@ class CombatSelector extends React.Component { // eslint-disable-line no-unused-
 
     render() {
         return (
-            <button type="button" onClick={this.handleClick}>{this.props.name}</button>
+            <Button onClick={this.handleClick}>{this.props.name}</Button>
         );
     }
 }
@@ -30,7 +33,7 @@ class Navigation extends React.Component {
         
         this.state = {
             requesting: false,
-            combatList: <div />
+            combatList: null
         };
     }
 
@@ -39,7 +42,7 @@ class Navigation extends React.Component {
     }
 
     handleClick() {
-        this.setState({ requesting: "disabled" });
+        this.setState({ requesting: false });
         axios({
             url: "/api/getdata",
             method: "get",
@@ -50,9 +53,9 @@ class Navigation extends React.Component {
             for (let i = 0; i < response.data.length; i++) {
                 const element = response.data[i];
                 combatList.push(
-                    <li key={i}>
+                    <ListItem key={i}>
                         <CombatSelector action={this.setCombat} num={i} name={`${element.start.toFixed(1)} - ${element.end.toFixed(1)} (${(element.end - element.start).toFixed(1)})`}/>
-                    </li>
+                    </ListItem>
                 );
             }
             if (combatList.length == 0) {
@@ -73,20 +76,12 @@ class Navigation extends React.Component {
     render() {
         return (
             <div>
-                <button type="button" disabled={this.state.requesting} onClick={this.handleClick}>Reload Data</button>
-                <h3>Categories</h3>
-                <ul>
-                    <li><Link to='/'>Damage</Link></li>
-                    <li><Link to='/heal'>Healing</Link></li>
-                    <li><Link to='/cast'>Cast</Link></li>
-                    <li><Link to='/damageTaken'>Damage Taken</Link></li>
-                    <li><Link to='/mana'>Mana</Link></li>
-                    <li><Link to='/log'>Log</Link></li>
-                </ul>
+                <Button disabled={this.state.requesting} onClick={this.handleClick}>Reload Data</Button>
+                <Divider />
                 <h3>Combats</h3>
-                <ul>
+                <List>
                     {this.state.combatList}
-                </ul>
+                </List>
             </div>
         );
     }

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Button from "@material-ui/core/Button"; // eslint-disable-line no-unused-vars
 
 class Log extends React.Component {
 
@@ -14,7 +15,7 @@ class Log extends React.Component {
     }
 
     handleClick() {
-        this.setState({ requesting: "disabled" });
+        this.setState({ requesting: false });
         axios({
             url: "/api/getlog",
             method: "get",
@@ -62,7 +63,7 @@ class Log extends React.Component {
         return (
             <div>
                 <h1 className="page-header">Log</h1>
-                <button type="button" disabled={this.state.requesting} onClick={this.handleClick}>Refresh</button>
+                <Button disabled={this.state.requesting} onClick={this.handleClick}>Refresh</Button>
                 <ul>{listItems}</ul>
             </div>
         );

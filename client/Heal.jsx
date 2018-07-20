@@ -1,6 +1,11 @@
 import React from "react";
 import Highcharts from "highcharts";
 import Drilldown from "highcharts/modules/drilldown";
+import Table from "@material-ui/core/Table"; // eslint-disable-line no-unused-vars
+import TableRow from "@material-ui/core/TableRow"; // eslint-disable-line no-unused-vars
+import TableCell from "@material-ui/core/TableCell"; // eslint-disable-line no-unused-vars
+import TableBody from "@material-ui/core/TableBody"; // eslint-disable-line no-unused-vars
+import TableHead from "@material-ui/core/TableHead"; // eslint-disable-line no-unused-vars
 import HighchartsReact from "highcharts-react-official"; // eslint-disable-line no-unused-vars
 import { registerDataUpdated, unregisterDataUpdated, getCurrentCombatData } from "./DataStore.js";
 import config from "./Configs.js";
@@ -64,14 +69,14 @@ class Heal extends React.Component {
                 const element = this.state.data.healings[i];
                 // table
                 tableEntries.push(
-                    <tr key={i}>
-                        <td>{element.time}</td>
-                        <td>{element.source}</td>
-                        <td>{element.target}</td>
-                        <td>{element.name}</td>
-                        <td>{element.amount}</td>
-                        <td>{element.overflow}</td>
-                    </tr>
+                    <TableRow key={i}>
+                        <TableCell>{element.time}</TableCell>
+                        <TableCell>{element.source}</TableCell>
+                        <TableCell>{element.target}</TableCell>
+                        <TableCell>{element.name}</TableCell>
+                        <TableCell>{element.amount}</TableCell>
+                        <TableCell>{element.overflow}</TableCell>
+                    </TableRow>
                 );
                 // hc HPS
                 if (hconfigHPS.units.hasOwnProperty(element.source) == false) {
@@ -243,21 +248,21 @@ class Heal extends React.Component {
                 <div>
                     <HighchartsReact highcharts={Highcharts} options={highConfigHps} />
                     <HighchartsReact highcharts={Highcharts} options={highConfigHealing} />
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Time</th>
-                                <th>Source</th>
-                                <th>Target</th>
-                                <th>Name</th>
-                                <th>Amount</th>
-                                <th>Overflow</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Time</TableCell>
+                                <TableCell>Source</TableCell>
+                                <TableCell>Target</TableCell>
+                                <TableCell>Name</TableCell>
+                                <TableCell>Amount</TableCell>
+                                <TableCell>Overflow</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
                             {tableEntries}
-                        </tbody>
-                    </table>
+                        </TableBody>
+                    </Table>
                 </div>
             );
         } else {
